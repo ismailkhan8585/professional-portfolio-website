@@ -1,0 +1,159 @@
+import type { Metadata } from 'next';
+import { NAME, ROLE, DOMAIN, SOCIALS, EMAIL } from '@/lib/constants';
+import FadeIn from '@/components/animations/FadeIn';
+import Link from 'next/link';
+import { Download, Github, Linkedin, Twitter, Mail } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: `About — ${NAME}`,
+  description: `Learn more about ${NAME}, a ${ROLE} with 5+ years of experience building web and mobile applications and AI-powered content.`,
+  alternates: { canonical: `${DOMAIN}/about` },
+};
+
+export default function AboutPage() {
+  return (
+    <div className="mx-auto max-w-4xl px-4 py-24 sm:px-6 lg:px-8">
+      <FadeIn>
+        <div className="mb-12">
+          <span className="font-mono text-sm text-emerald-400">// About</span>
+          <h1 className="mt-2 font-heading text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">
+            About Me
+          </h1>
+        </div>
+      </FadeIn>
+
+      <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
+        <FadeIn className="flex-shrink-0">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden rounded-2xl border-2 border-emerald-500/20 lg:mx-0">
+            <div className="flex h-full w-full items-center justify-center bg-zinc-800">
+              <span className="font-mono text-sm text-text-muted">Your Photo</span>
+            </div>
+          </div>
+        </FadeIn>
+
+        <div className="flex-1">
+          <FadeIn delay={0.1}>
+            <div className="flex flex-col gap-5 text-text-secondary">
+              <p>
+                I&apos;m Muhammad Ismail, a full-stack developer with 5+ years of experience
+                building web and mobile applications for startups, agencies, and small businesses.
+                I specialize in React, Next.js, and Node.js, with a strong focus on clean
+                architecture and shipping fast without cutting corners.
+              </p>
+              <p>
+                My journey started with curiosity about how websites work and quickly grew into
+                a career building production-grade applications. Over the years, I&apos;ve worked
+                across the entire stack — from designing database schemas and REST APIs to crafting
+                polished, accessible user interfaces.
+              </p>
+              <p>
+                Alongside development, I also create AI-generated video content and manage social
+                media accounts for brands — using tools like Gemini AI, Grok AI, and InVideo AI
+                to produce marketing videos and posts that drive real engagement. This dual skill
+                set lets me help clients not just build products, but also grow their audience.
+              </p>
+              <p>
+                Outside of code, I&apos;m usually exploring new tech, reading, or gaming. Currently
+                based in [City, Country] and open to remote work worldwide.
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.2}>
+            <div className="mt-10">
+              <h2 className="font-heading text-2xl font-bold text-text-primary">Experience</h2>
+              <div className="mt-6 flex flex-col gap-6">
+                {[
+                  {
+                    role: 'Full-Stack Developer',
+                    company: 'Freelance',
+                    period: '2020 — Present',
+                    desc: 'Building web and mobile apps for clients worldwide. Delivered 25+ projects across SaaS, e-commerce, and internal tools.',
+                  },
+                  {
+                    role: 'AI Content Specialist',
+                    company: 'OrganoCity',
+                    period: '2023 — Present',
+                    desc: 'Managing social media presence and producing AI-generated marketing videos using Gemini AI, InVideo AI, and Grok AI.',
+                  },
+                ].map((job) => (
+                  <div
+                    key={job.role + job.company}
+                    className="rounded-xl border border-border-DEFAULT bg-bg-card p-5"
+                  >
+                    <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
+                      <h3 className="font-heading text-lg font-semibold text-text-primary">
+                        {job.role}
+                      </h3>
+                      <span className="font-mono text-xs text-text-muted">{job.period}</span>
+                    </div>
+                    <span className="mt-1 block text-sm text-emerald-400">{job.company}</span>
+                    <p className="mt-2 text-sm text-text-secondary">{job.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.25}>
+            <div className="mt-10">
+              <h2 className="font-heading text-2xl font-bold text-text-primary">Education</h2>
+              <div className="mt-4 rounded-xl border border-border-DEFAULT bg-bg-card p-5">
+                <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
+                  <h3 className="font-heading text-lg font-semibold text-text-primary">
+                    B.S. Computer Science
+                  </h3>
+                  <span className="font-mono text-xs text-text-muted">2016 — 2020</span>
+                </div>
+                <span className="mt-1 block text-sm text-text-secondary">
+                  [Your University Name]
+                </span>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.3}>
+            <div className="mt-10">
+              <h2 className="font-heading text-2xl font-bold text-text-primary">Fun Facts</h2>
+              <ul className="mt-4 flex list-disc flex-col gap-2 pl-5 text-text-secondary">
+                <li>I learned to code by building a clone of my favorite website.</li>
+                <li>I&apos;ve shipped a project in under 48 hours during a hackathon.</li>
+                <li>I can spend hours tweaking animations until they feel just right.</li>
+                <li>I believe dark mode should be the default everywhere.</li>
+              </ul>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.35}>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Link
+                href="/resume"
+                className="inline-flex items-center gap-2 rounded-xl border border-border-DEFAULT px-5 py-2.5 text-sm font-medium text-text-primary transition-colors hover:border-emerald-500/30 hover:bg-bg-hover"
+              >
+                <Download className="h-4 w-4" />
+                Download Resume
+              </Link>
+              {[
+                { icon: Github, href: SOCIALS.github, label: 'GitHub' },
+                { icon: Linkedin, href: SOCIALS.linkedin, label: 'LinkedIn' },
+                { icon: Twitter, href: SOCIALS.twitter, label: 'Twitter' },
+                { icon: Mail, href: `mailto:${EMAIL}`, label: 'Email' },
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target={social.label !== 'Email' ? '_blank' : undefined}
+                  rel={social.label !== 'Email' ? 'noopener noreferrer' : undefined}
+                  aria-label={social.label}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-text-secondary transition-colors hover:bg-emerald-500/10 hover:text-emerald-400"
+                >
+                  <social.icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </div>
+  );
+}
