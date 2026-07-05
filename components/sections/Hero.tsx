@@ -19,10 +19,10 @@ const itemVariants = {
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden pt-20">
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-12 px-4 sm:px-6 lg:flex-row lg:px-8">
+    <section className="relative overflow-hidden pb-16 pt-28 sm:pb-20 sm:pt-32 lg:flex lg:min-h-screen lg:items-center lg:pb-24 lg:pt-24">
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:gap-14 lg:px-8">
         <motion.div
-          className="flex max-w-2xl flex-col items-start"
+          className="flex max-w-2xl flex-col items-center text-center sm:items-start sm:text-left"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -47,45 +47,45 @@ export default function Hero() {
 
           <motion.h1
             variants={itemVariants}
-            className="font-heading text-5xl font-bold tracking-tight text-text-primary sm:text-6xl lg:text-7xl"
+            className="font-heading text-4xl font-bold tracking-tight text-text-primary sm:text-6xl lg:text-7xl"
           >
             {NAME}
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className="mt-2 font-heading text-2xl font-semibold text-emerald-400 sm:text-3xl"
+            className="mt-3 font-heading text-xl font-semibold leading-tight text-emerald-400 sm:text-3xl"
           >
             {ROLE}
           </motion.p>
 
           <motion.p
             variants={itemVariants}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-text-secondary"
+            className="mt-5 max-w-xl text-base leading-7 text-text-secondary sm:mt-6 sm:text-lg sm:leading-8"
           >
             I build fast, reliable web and mobile applications — and create AI-powered video content and social media campaigns that grow brands. Available for freelance projects and full-time opportunities.
           </motion.p>
 
           <motion.div
             variants={itemVariants}
-            className="mt-8 flex flex-wrap gap-4"
+            className="mt-8 grid w-full gap-3 sm:flex sm:flex-wrap sm:gap-4"
           >
             <Link
               href="/#work"
-              className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-emerald-600 active:scale-[0.97]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-black shadow-sm shadow-emerald-500/20 transition-colors hover:bg-emerald-600 active:scale-[0.98]"
             >
               View My Work
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 rounded-xl border-2 border-emerald-500/40 px-6 py-3 text-sm font-semibold text-emerald-400 transition-colors hover:bg-emerald-500/10 active:scale-[0.97]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-emerald-500/40 px-6 py-3 text-sm font-semibold text-emerald-400 transition-colors hover:bg-emerald-500/10 active:scale-[0.98]"
             >
               Hire Me
             </Link>
             <Link
               href="/resume"
-              className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-medium text-text-muted transition-colors hover:text-text-primary active:scale-[0.97]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-customBorder px-6 py-3 text-sm font-medium text-text-secondary transition-colors hover:border-customBorder-hover hover:bg-bg-hover hover:text-text-primary active:scale-[0.98] sm:border-transparent sm:px-3"
             >
               <Download className="h-4 w-4" />
               Download Resume
@@ -94,17 +94,27 @@ export default function Hero() {
 
           <motion.div
             variants={itemVariants}
-            className="mt-12 flex w-full flex-col gap-3"
+            className="mt-10 flex w-full flex-col gap-3 sm:mt-12"
           >
-            <span className="font-mono text-xs text-text-muted">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-text-muted">
               Tech Stack
             </span>
-            <div className="relative w-full overflow-hidden">
+            <div className="flex flex-wrap justify-center gap-2 sm:justify-start md:hidden">
+              {techStack.map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full border border-customBorder bg-bg-card px-3 py-1.5 font-mono text-xs text-text-secondary"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <div className="relative hidden w-full overflow-hidden md:block">
               <div className="flex animate-marquee whitespace-nowrap">
                 {[...techStack, ...techStack].map((tech, i) => (
                   <span
                     key={i}
-                    className="mx-2 rounded-full bg-zinc-900 px-3 py-1 font-mono text-xs text-text-muted"
+                    className="mx-2 rounded-full border border-customBorder bg-bg-card px-3 py-1.5 font-mono text-xs text-text-muted"
                   >
                     {tech}
                   </span>
@@ -114,7 +124,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        <div className="hidden lg:block">
+        <div className="w-full">
           <CodeEditorMockup />
         </div>
       </div>
@@ -146,9 +156,9 @@ function CodeEditorMockup() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6, duration: 0.6 }}
-      className="animate-float w-[480px] rounded-xl border border-border-DEFAULT bg-bg-card shadow-2xl"
+      className="mx-auto w-full max-w-[480px] rounded-lg border border-customBorder bg-bg-card shadow-2xl shadow-black/20 lg:animate-float lg:mx-0"
     >
-      <div className="flex items-center gap-2 border-b border-border-DEFAULT px-4 py-3">
+      <div className="flex items-center gap-2 border-b border-customBorder px-4 py-3">
         <span className="h-3 w-3 rounded-full bg-red-500" />
         <span className="h-3 w-3 rounded-full bg-yellow-500" />
         <span className="h-3 w-3 rounded-full bg-green-500" />
@@ -156,7 +166,7 @@ function CodeEditorMockup() {
           developer.ts
         </span>
       </div>
-      <div className="p-4 font-mono text-sm">
+      <div className="p-4 font-mono text-xs sm:text-sm">
         <TypingAnimation text={code} />
       </div>
     </motion.div>

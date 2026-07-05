@@ -46,12 +46,12 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="py-24">
+    <section className="py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
-          <div className="mb-16">
+          <div className="mb-10 sm:mb-14 lg:mb-16">
             <span className="font-mono text-sm text-emerald-400">
-              // How I Can Help
+              {'// How I Can Help'}
             </span>
             <h2 className="mt-2 font-heading text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
               Services
@@ -59,14 +59,14 @@ export default function Services() {
           </div>
         </FadeIn>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           {services.map((service, i) => (
             <FadeIn key={service.title} delay={i * 0.1}>
-              <div className="group flex h-full flex-col rounded-xl border border-border-DEFAULT bg-bg-card p-6 transition-all hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-lg">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
+              <div className="group flex h-full flex-col rounded-lg border border-customBorder bg-bg-card p-5 transition-all hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-lg sm:p-6">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400">
                   <service.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mb-2 font-heading text-lg font-semibold text-text-primary">
+                <h3 className="mb-2 font-heading text-lg font-semibold leading-tight text-text-primary">
                   {service.title}
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-text-secondary">
@@ -88,7 +88,7 @@ export default function Services() {
                 <div className="mt-auto pt-4">
                   <Link
                     href="/#contact"
-                    className="inline-flex items-center gap-1 text-sm font-medium text-emerald-400 transition-colors hover:text-emerald-300"
+                    className="inline-flex min-h-10 items-center gap-1 rounded-lg text-sm font-medium text-emerald-400 transition-colors hover:text-emerald-300"
                   >
                     Learn More
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />

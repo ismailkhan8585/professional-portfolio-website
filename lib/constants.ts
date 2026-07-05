@@ -1,9 +1,8 @@
 export const NAME = 'Muhammad Ismail';
-export const ROLE = 'Full-Stack Developer & AI Content Specialist';
-export const EMAIL = 'hello@muhammadismail.dev';
-export const DOMAIN = 'https://muhammadismail.dev';
+export const ROLE = 'Full Stack JavaScript Developer | Mobile App Developer | AI Automation Specialist';
+export const EMAIL = 'mi2694598@gmail.com';
+export const DOMAIN = 'https://developer-portfolio-ten-mocha.vercel.app';
 export const SOCIALS = {
-  github: 'https://github.com/muhammadismail',
-  linkedin: 'https://linkedin.com/in/muhammadismail',
-  twitter: 'https://twitter.com/muhammadismail',
+  github: 'https://github.com/ismailkhan8585',
+  linkedin: 'https://linkedin.com/in/muhammad-ismail-494613326',
 };

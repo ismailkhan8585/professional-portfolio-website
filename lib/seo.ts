@@ -1,4 +1,4 @@
-import { DOMAIN, NAME, ROLE } from '@/lib/constants';
+import { DOMAIN, NAME, ROLE, SOCIALS } from '@/lib/constants';
 
 export function personJsonLd() {
   return {
@@ -7,10 +7,6 @@ export function personJsonLd() {
     name: NAME,
     jobTitle: ROLE,
     url: DOMAIN,
-    sameAs: [
-      'https://github.com/muhammadismail',
-      'https://linkedin.com/in/muhammadismail',
-      'https://twitter.com/muhammadismail',
-    ],
+    sameAs: [SOCIALS.github, SOCIALS.linkedin],
   };
 }

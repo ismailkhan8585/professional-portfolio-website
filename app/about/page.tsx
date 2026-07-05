@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { NAME, ROLE, DOMAIN, SOCIALS, EMAIL } from '@/lib/constants';
 import FadeIn from '@/components/animations/FadeIn';
 import Link from 'next/link';
-import { Download, Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Download, Github, Linkedin, Mail } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: `About — ${NAME}`,
@@ -12,28 +13,34 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-24 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-4xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 lg:px-8 lg:pb-24">
       <FadeIn>
-        <div className="mb-12">
-          <span className="font-mono text-sm text-emerald-400">// About</span>
+        <div className="mb-10 sm:mb-12">
+          <span className="font-mono text-sm text-emerald-400">{'// About'}</span>
           <h1 className="mt-2 font-heading text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">
             About Me
           </h1>
         </div>
       </FadeIn>
 
-      <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
+      <div className="grid gap-10 lg:grid-cols-[280px_1fr] lg:items-start lg:gap-14">
         <FadeIn className="flex-shrink-0">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden rounded-2xl border-2 border-emerald-500/20 lg:mx-0">
-            <div className="flex h-full w-full items-center justify-center bg-zinc-800">
-              <span className="font-mono text-sm text-text-muted">Your Photo</span>
-            </div>
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden rounded-lg border border-customBorder bg-bg-card p-3 lg:mx-0">
+            <Image
+              src="/ismail.png"
+              alt="Muhammad Ismail portrait"
+              width={1024}
+              height={1536}
+              sizes="(min-width: 1024px) 280px, 320px"
+              className="h-full w-full rounded-md object-cover"
+              priority
+            />
           </div>
         </FadeIn>
 
         <div className="flex-1">
           <FadeIn delay={0.1}>
-            <div className="flex flex-col gap-5 text-text-secondary">
+            <div className="flex flex-col gap-5 text-base leading-7 text-text-secondary">
               <p>
                 I&apos;m Muhammad Ismail, a full-stack developer with 5+ years of experience
                 building web and mobile applications for startups, agencies, and small businesses.
@@ -79,7 +86,7 @@ export default function AboutPage() {
                 ].map((job) => (
                   <div
                     key={job.role + job.company}
-                    className="rounded-xl border border-border-DEFAULT bg-bg-card p-5"
+                    className="rounded-lg border border-customBorder bg-bg-card p-5"
                   >
                     <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
                       <h3 className="font-heading text-lg font-semibold text-text-primary">
@@ -98,7 +105,7 @@ export default function AboutPage() {
           <FadeIn delay={0.25}>
             <div className="mt-10">
               <h2 className="font-heading text-2xl font-bold text-text-primary">Education</h2>
-              <div className="mt-4 rounded-xl border border-border-DEFAULT bg-bg-card p-5">
+              <div className="mt-4 rounded-lg border border-customBorder bg-bg-card p-5">
                 <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
                   <h3 className="font-heading text-lg font-semibold text-text-primary">
                     B.S. Computer Science
@@ -128,7 +135,7 @@ export default function AboutPage() {
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 href="/resume"
-                className="inline-flex items-center gap-2 rounded-xl border border-border-DEFAULT px-5 py-2.5 text-sm font-medium text-text-primary transition-colors hover:border-emerald-500/30 hover:bg-bg-hover"
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-customBorder px-5 py-2.5 text-sm font-medium text-text-primary transition-colors hover:border-emerald-500/30 hover:bg-bg-hover sm:w-auto"
               >
                 <Download className="h-4 w-4" />
                 Download Resume
@@ -136,7 +143,6 @@ export default function AboutPage() {
               {[
                 { icon: Github, href: SOCIALS.github, label: 'GitHub' },
                 { icon: Linkedin, href: SOCIALS.linkedin, label: 'LinkedIn' },
-                { icon: Twitter, href: SOCIALS.twitter, label: 'Twitter' },
                 { icon: Mail, href: `mailto:${EMAIL}`, label: 'Email' },
               ].map((social) => (
                 <a
@@ -145,7 +151,7 @@ export default function AboutPage() {
                   target={social.label !== 'Email' ? '_blank' : undefined}
                   rel={social.label !== 'Email' ? 'noopener noreferrer' : undefined}
                   aria-label={social.label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-text-secondary transition-colors hover:bg-emerald-500/10 hover:text-emerald-400"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-customBorder bg-bg-card text-text-secondary transition-colors hover:bg-emerald-500/10 hover:text-emerald-400"
                 >
                   <social.icon className="h-4 w-4" />
                 </a>

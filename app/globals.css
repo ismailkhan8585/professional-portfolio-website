@@ -28,7 +28,45 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --radius: 0.75rem;
+    --app-bg: 9 9 11;
+    --app-card: 18 18 21;
+    --app-hover: 27 27 31;
+    --app-border: 43 43 48;
+    --app-border-hover: 82 82 91;
+    --app-text-primary: 250 250 250;
+    --app-text-secondary: 180 180 190;
+    --app-text-muted: 113 113 122;
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 210 40% 98%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 160 84% 34%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 160 84% 34%;
+    --app-bg: 255 255 255;
+    --app-card: 248 250 252;
+    --app-hover: 241 245 249;
+    --app-border: 226 232 240;
+    --app-border-hover: 148 163 184;
+    --app-text-primary: 15 23 42;
+    --app-text-secondary: 71 85 105;
+    --app-text-muted: 100 116 139;
   }
 
   html {
@@ -36,12 +74,17 @@
   }
 
   body {
-    @apply bg-bg text-text-primary antialiased;
+    @apply min-h-screen overflow-x-hidden bg-bg text-text-primary antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
   }
 
   * {
-    border-color: rgb(39 39 42);
+    border-color: rgb(var(--app-border));
+  }
+
+  [id] {
+    scroll-margin-top: 6rem;
   }
 
   ::selection {

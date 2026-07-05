@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Github, Linkedin, Twitter, Mail, Check, Loader2 } from 'lucide-react';
+import { Github, Linkedin, Mail, Check, Loader2 } from 'lucide-react';
 import FadeIn from '@/components/animations/FadeIn';
 import { EMAIL, SOCIALS } from '@/lib/constants';
 
@@ -64,35 +64,35 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-12 lg:flex-row">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
           <FadeIn className="flex-1">
             <div className="flex flex-col gap-6">
               <div>
                 <span className="font-mono text-sm text-emerald-400">
-                  // Get In Touch
+                  {'// Get In Touch'}
                 </span>
                 <h2 className="mt-2 font-heading text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
                   Let&apos;s build something together
                 </h2>
-                <p className="mt-4 text-text-secondary">
+                <p className="mt-4 max-w-xl text-base leading-7 text-text-secondary">
                   Whether you have a project in mind or an opportunity to discuss, I&apos;d love to hear from you.
                 </p>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="grid gap-3 sm:flex sm:items-center">
                 <button
                   onClick={copyEmail}
-                  className="inline-flex items-center gap-2 rounded-xl border border-border-DEFAULT bg-bg-card px-4 py-2.5 text-sm font-medium text-text-primary transition-colors hover:border-emerald-500/30"
+                  className="inline-flex min-h-11 min-w-0 items-center justify-center gap-2 rounded-lg border border-customBorder bg-bg-card px-4 py-2.5 text-sm font-medium text-text-primary transition-colors hover:border-emerald-500/30 sm:justify-start"
                 >
                   <Mail className="h-4 w-4 text-emerald-400" />
-                  {EMAIL}
+                  <span className="truncate">{EMAIL}</span>
                   {copied && <Check className="h-3.5 w-3.5 text-emerald-400" />}
                 </button>
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-emerald-600"
+                  className="inline-flex min-h-11 items-center justify-center rounded-lg bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-black shadow-sm shadow-emerald-500/20 transition-colors hover:bg-emerald-600"
                 >
                   Send Email
                 </a>
@@ -102,7 +102,6 @@ export default function Contact() {
                 {[
                   { icon: Github, href: SOCIALS.github, label: 'GitHub' },
                   { icon: Linkedin, href: SOCIALS.linkedin, label: 'LinkedIn' },
-                  { icon: Twitter, href: SOCIALS.twitter, label: 'Twitter' },
                 ].map((social) => (
                   <a
                     key={social.label}
@@ -110,7 +109,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-text-secondary transition-colors hover:bg-emerald-500/10 hover:text-emerald-400"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-customBorder bg-bg-card text-text-secondary transition-colors hover:bg-emerald-500/10 hover:text-emerald-400"
                   >
                     <social.icon className="h-4 w-4" />
                   </a>
@@ -129,7 +128,7 @@ export default function Contact() {
 
           <FadeIn delay={0.15} className="flex-1">
             {submitted ? (
-              <div className="flex flex-col items-center justify-center rounded-xl border border-emerald-500/30 bg-bg-card p-12 text-center">
+              <div className="flex flex-col items-center justify-center rounded-lg border border-emerald-500/30 bg-bg-card p-8 text-center sm:p-12">
                 <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10">
                   <Check className="h-8 w-8 text-emerald-400" />
                 </div>
@@ -143,7 +142,7 @@ export default function Contact() {
             ) : (
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="flex flex-col gap-5 rounded-xl border border-border-DEFAULT bg-bg-card p-6 sm:p-8"
+                className="flex flex-col gap-5 rounded-lg border border-customBorder bg-bg-card p-5 shadow-lg shadow-black/5 sm:p-8"
               >
                 <input
                   type="text"
@@ -158,7 +157,7 @@ export default function Contact() {
                   </label>
                   <input
                     {...register('name')}
-                    className="w-full rounded-lg border border-border-DEFAULT bg-bg px-3 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20"
+                    className="w-full rounded-lg border border-customBorder bg-bg px-3 py-3 text-base text-text-primary outline-none transition-colors placeholder:text-text-muted focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 sm:py-2.5 sm:text-sm"
                     placeholder="Your name"
                   />
                   {errors.name && (
@@ -172,7 +171,7 @@ export default function Contact() {
                   <input
                     {...register('email')}
                     type="email"
-                    className="w-full rounded-lg border border-border-DEFAULT bg-bg px-3 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20"
+                    className="w-full rounded-lg border border-customBorder bg-bg px-3 py-3 text-base text-text-primary outline-none transition-colors placeholder:text-text-muted focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 sm:py-2.5 sm:text-sm"
                     placeholder="you@example.com"
                   />
                   {errors.email && (
@@ -185,7 +184,7 @@ export default function Contact() {
                   </label>
                   <select
                     {...register('projectType')}
-                    className="w-full rounded-lg border border-border-DEFAULT bg-bg px-3 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20"
+                    className="w-full rounded-lg border border-customBorder bg-bg px-3 py-3 text-base text-text-primary outline-none transition-colors focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 sm:py-2.5 sm:text-sm"
                   >
                     <option value="Freelance Project">Freelance Project</option>
                     <option value="Job Opportunity">Job Opportunity</option>
@@ -200,7 +199,7 @@ export default function Contact() {
                     </label>
                     <select
                       {...register('budget')}
-                      className="w-full rounded-lg border border-border-DEFAULT bg-bg px-3 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20"
+                      className="w-full rounded-lg border border-customBorder bg-bg px-3 py-3 text-base text-text-primary outline-none transition-colors focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 sm:py-2.5 sm:text-sm"
                     >
                       <option value="">Select budget</option>
                       <option value="Under $1k">Under $1k</option>
@@ -217,7 +216,7 @@ export default function Contact() {
                   <textarea
                     {...register('message')}
                     rows={4}
-                    className="w-full rounded-lg border border-border-DEFAULT bg-bg px-3 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20"
+                    className="w-full rounded-lg border border-customBorder bg-bg px-3 py-3 text-base text-text-primary outline-none transition-colors placeholder:text-text-muted focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 sm:py-2.5 sm:text-sm"
                     placeholder="Tell me about your project..."
                   />
                   {errors.message && (
@@ -227,7 +226,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-emerald-600 disabled:opacity-60"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-black shadow-sm shadow-emerald-500/20 transition-colors hover:bg-emerald-600 disabled:opacity-60"
                 >
                   {isSubmitting ? (
                     <>

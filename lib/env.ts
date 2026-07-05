@@ -2,8 +2,8 @@ import { z } from 'zod';
 
 const envSchema = z.object({
   RESEND_API_KEY: z.string().min(1).optional().or(z.literal('')),
-  NEXT_PUBLIC_SITE_URL: z.string().url().default('https://muhammadismail.dev'),
-  CONTACT_EMAIL: z.string().email().default('hello@muhammadismail.dev'),
+  NEXT_PUBLIC_SITE_URL: z.string().url().default('https://professional-portfolio-website-mocha.vercel.app/'),
+  CONTACT_EMAIL: z.string().email().default('mi2694598@gmail.com'),
   RATE_LIMIT_SECRET: z.string().min(1).optional().or(z.literal('')),
 });
 
