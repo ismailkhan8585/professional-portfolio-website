@@ -95,36 +95,73 @@ export const projects: Project[] = [
   featured: true,
 },
   {
-    slug: 'real-estate',
-    title: 'Real Estate Listing Platform',
+    slug: 'taxirapport',
+    title: 'TaxiRapport',
     description:
-      'Property search platform with map integration, advanced filters, and agent dashboard for listing management.',
+      'TaxiRapport is a mobile application built with React Native to help taxi drivers track daily trips, driving activity, and earnings in a structured and efficient way. The app allows users to log trips, monitor performance summaries, and review historical driving data through a clean and user-friendly interface. It focuses on reliability, smooth navigation, and real-time data management to support drivers in managing their work more effectively.',
     previewImage:
-      'https://placehold.co/800x500/0a0a0a/10b981?text=Real+Estate+Preview',
-    stack: ['React', 'Express', 'MongoDB', 'Google Maps API'],
-    category: 'Web App',
-    filters: ['Web Apps', 'Freelance'],
+      '/TaxiRapport.png',
+    stack: ['React Native','CLI','Firebase','Redux'],
+    category: 'Mobile App',
+    filters: ['Mobile Apps', 'Freelance'],
     links: [
-      { label: 'Live Site', href: '#', external: true },
-      { label: 'GitHub', href: '#', external: true },
+      { label: 'Live Site', href: 'https://apps.apple.com/pk/app/taxirapport/id6742173529', external: true },
+      { label: 'Case Study', href: '/work/taxirapport' },
+      { label: 'GitHub', href: 'https://github.com/ismailkhan8585/TaxiRapport-ReactNative', external: true },
     ],
     featured: true,
+    caseStudy: {
+      client: 'TaxiRapport',
+      role: 'React Native Developer',
+      timeline: '6 weeks',
+      challenge:
+        'Taxi drivers needed a simple mobile workflow for recording trips, reviewing daily activity, and understanding earnings without relying on scattered notes or manual calculations. The app had to stay fast, practical, and easy to use during a working day.',
+      solution:
+        'I built TaxiRapport as a React Native mobile app with structured trip logging, Firebase-backed data handling, and Redux state management. The experience focuses on quick entry, clear summaries, and reliable navigation so drivers can track work activity with minimal friction.',
+      features: [
+        'Trip logging flow for recording daily rides and driving activity',
+        'Earnings and performance summaries for quick driver review',
+        'Historical trip data organized for easy lookup and comparison',
+        'Firebase integration for reliable mobile data management',
+        'Redux-powered state management for predictable app behavior',
+      ],
+      results:
+        'TaxiRapport gives drivers a focused mobile tool for managing trip records and earnings in one place. The project demonstrates a production-minded React Native workflow with practical data handling, clean UI structure, and an app-store-ready delivery path.',
+    },
   },
   {
-    slug: 'internal-tools',
-    title: 'Internal Tools Suite',
+    slug: 'zayvoratech',
+    title: 'Zayvora Tech',
     description:
-      'A set of internal productivity tools built for a remote team — task tracking, time logging, and reporting, replacing 3 separate paid subscriptions.',
+      'A professional digital agency website for Zayvora Tech, positioning the company as a complete growth partner for websites, e-commerce stores, paid ads, branding, content, social media management, and long-term business support.',
     previewImage:
-      'https://placehold.co/800x500/0a0a0a/10b981?text=Internal+Tools+Preview',
-    stack: ['Next.js', 'tRPC', 'PostgreSQL', 'Tailwind CSS'],
-    category: 'Personal',
-    filters: ['Personal'],
+      '/zayvora.png',
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Responsive UI'],
+    category: 'Business Website',
+    filters: ['Web Apps', 'Freelance'],
     links: [
-      { label: 'Case Study', href: '/work/internal-tools' },
-      { label: 'GitHub', href: '#', external: true },
+      { label: 'Live Site', href: 'https://www.zayvoratech.com/', external: true },
+      { label: 'Case Study', href: '/work/zayvoratech' },
     ],
     featured: true,
+    caseStudy: {
+      client: 'Zayvora Tech',
+      role: 'Website Developer',
+      timeline: '4 weeks',
+      challenge:
+        'Zayvora Tech needed a polished online presence that could communicate a broad service offering without feeling scattered. The website had to explain websites, stores, ads, branding, content, social media, consulting, and support in a clear growth-focused story while giving business owners an easy path to contact the team.',
+      solution:
+        'I created a modern agency website with strong conversion sections, service breakdowns, pricing plans, client proof, and direct contact calls to action. The structure presents Zayvora Tech as a complete digital growth partner for Pakistan-based and international businesses, with messaging built around visibility, trust, and measurable business outcomes.',
+      features: [
+        'Conversion-focused homepage with a clear agency positioning and primary calls to action',
+        'Service sections for branding, web development, app development, e-commerce, ads, content, social media, cloud solutions, and consulting',
+        'Pricing plan presentation that helps prospects compare service levels quickly',
+        'Trust-building sections for agency values, client results, testimonials, and business impact',
+        'Responsive layout and contact flow designed for fast inquiries through forms, calls, and WhatsApp',
+      ],
+      results:
+        'The finished website gives Zayvora Tech a credible, professional digital presence that explains the company clearly, supports lead generation, and makes the brand feel ready for serious clients. It turns a wide service catalog into a focused business-growth narrative with practical conversion paths.',
+    },
   },
   {
     slug: 'organocity',
@@ -132,7 +169,7 @@ export const projects: Project[] = [
     description:
       'Managed full social media presence and produced AI-generated marketing videos and posts for OrganoCity using Gemini AI, InVideo AI, and Grok AI — covering content strategy, video production, and cross-platform publishing.',
     previewImage:
-      'https://placehold.co/800x500/0a0a0a/10b981?text=OrganoCity+Preview',
+      '/socail .png',
     stack: ['Gemini AI', 'InVideo AI', 'Grok AI', 'Social Media Management'],
     category: 'AI Video & Marketing',
     filters: ['AI Video & Marketing', 'Freelance'],

@@ -21,7 +21,7 @@ const resumePdf = '/Muhammad_Ismail_ATS_CV.pdf';
 const skillGroups = [
   {
     title: 'Frontend',
-    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    skills: ['React', 'Next.js',"React native", 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
   },
   {
     title: 'Backend',
@@ -29,7 +29,7 @@ const skillGroups = [
   },
   {
     title: 'Mobile',
-    skills: ['React Native', 'Expo', 'Cross-platform app development'],
+    skills: ['React Native',"CLI", 'Expo', 'Cross-platform app development'],
   },
   {
     title: 'Tools & Platforms',

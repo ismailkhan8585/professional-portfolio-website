@@ -51,7 +51,7 @@ export default function About() {
                 </p>
                 <p>
                   Outside of code, I&apos;m usually exploring new tech, reading,
-                  or gaming. Currently based in [City, Country] and open to
+                  or gaming. Currently based in Islamabad, Pakistan, and open to
                   remote work worldwide.
                 </p>
               </div>

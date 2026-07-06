@@ -1,10 +1,10 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { inter, spaceGrotesk, jetbrainsMono } from '@/lib/fonts';
-import { ThemeProvider } from 'next-themes';
 import { Toaster } from 'sonner';
 import { NAME, ROLE, DOMAIN } from '@/lib/constants';
 import { personJsonLd } from '@/lib/seo';
+import Providers from './providers';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
@@ -62,7 +62,7 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
     >
       <body className="font-sans">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <Providers>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -73,7 +73,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
           <Toaster position="bottom-right" richColors />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

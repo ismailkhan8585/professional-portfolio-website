@@ -61,7 +61,7 @@ export default function AboutPage() {
               </p>
               <p>
                 Outside of code, I&apos;m usually exploring new tech, reading, or gaming. Currently
-                based in [City, Country] and open to remote work worldwide.
+                based in Islamabad, Pakistan, and open to remote work worldwide.
               </p>
             </div>
           </FadeIn>
@@ -113,7 +113,7 @@ export default function AboutPage() {
                   <span className="font-mono text-xs text-text-muted">2016 — 2020</span>
                 </div>
                 <span className="mt-1 block text-sm text-text-secondary">
-                  [Your University Name]
+                  [Abdulwali Khan University, Mardan, Pakistan]
                 </span>
               </div>
             </div>
