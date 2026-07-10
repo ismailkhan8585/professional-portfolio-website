@@ -45,7 +45,7 @@ const experience = [
   {
     role: 'Full-Stack Developer',
     company: 'Freelance',
-    period: '2020 - Present',
+    period: '2023 ',
     details: [
       'Build responsive web and mobile applications for startups, small businesses, and client brands.',
       'Deliver SaaS dashboards, e-commerce platforms, booking systems, internal tools, and marketing websites.',
@@ -55,7 +55,7 @@ const experience = [
   {
     role: 'AI Content Specialist',
     company: 'OrganoCity',
-    period: '2023 - Present',
+    period: 'Present',
     details: [
       'Manage social media content workflows for brand visibility and audience growth.',
       'Create AI-assisted scripts, visuals, reels, and marketing videos using modern generative tools.',

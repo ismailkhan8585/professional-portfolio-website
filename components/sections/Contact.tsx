@@ -4,16 +4,22 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { toast } from 'sonner';
 import { Github, Linkedin, Mail, Check, Loader2 } from 'lucide-react';
 import FadeIn from '@/components/animations/FadeIn';
 import { EMAIL, SOCIALS } from '@/lib/constants';
 
 const contactSchema = z.object({
   name: z.string().min(1, 'Name is required'),
-  email: z.string().email('Invalid email address'),
-  projectType: z.enum(['Freelance Project', 'Job Opportunity', 'AI Video/Social Media', 'Other']),
+  email: z.string().min(1, 'Email is required').email('Invalid email address'),
+  projectType: z.enum(
+    ['Freelance Project', 'Job Opportunity', 'AI Video/Social Media', 'Other'],
+    {
+      required_error: 'Project type is required',
+    }
+  ),
   budget: z.string().optional(),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
+  message: z.string().min(1, 'Message is required'),
   website: z.string().optional(),
 });
 
@@ -45,11 +51,14 @@ export default function Contact() {
         body: JSON.stringify(data),
       });
       if (res.ok) {
+        toast.success('Message sent successfully. I will contact you soon.');
         setSubmitted(true);
         reset();
+        return;
       }
+      toast.error('Something went wrong. Please try again.');
     } catch {
-      // handled silently
+      toast.error('Something went wrong. Please try again.');
     }
   };
 

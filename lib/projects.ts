@@ -36,6 +36,7 @@ export const projects: Project[] = [
     links: [
      { label: 'Live Site', href: 'https://ilmtrack-saas.vercel.app/', external: true },
       { label: 'Case Study', href: '/work/ilmtrack-school-management-system' },
+      { label: 'GitHub', href: 'https://github.com/ismailkhan8585/ilmtrack-saas', external: true },
     ],
     featured: true,
     caseStudy: {
@@ -69,6 +70,7 @@ export const projects: Project[] = [
     links: [
       // { label: 'App Store', href: '#', external: true },
       { label: 'Case Study', href: 'https://organocity.com/' },
+      { label: 'GitHub', href: 'https://github.com/ismailkhan8585/Organocity', external: true },
     ],
     featured: true,
   },
@@ -90,6 +92,11 @@ export const projects: Project[] = [
     {
       label: 'Case Study',
       href: '/work/royal-furniture-ecommerce',
+    },
+    {
+      label: 'GitHub',
+      href: 'https://github.com/ismailkhan8585/royal-furniture-ecommerce',
+      external: true,
     },
   ],
   featured: true,
@@ -142,6 +149,7 @@ export const projects: Project[] = [
     links: [
       { label: 'Live Site', href: 'https://www.zayvoratech.com/', external: true },
       { label: 'Case Study', href: '/work/zayvoratech' },
+      { label: 'GitHub', href: 'https://github.com/ismailkhan8585/zayvora-Tech', external: true },
     ],
     featured: true,
     caseStudy: {
@@ -175,9 +183,57 @@ export const projects: Project[] = [
     filters: ['AI Video & Marketing', 'Freelance'],
     links: [
       { label: 'Visit Site', href: 'https://organocity.com/', external: true },
+      { label: 'GitHub', href: 'https://github.com/ismailkhan8585/Organocity', external: true },
     ],
+    
     featured: true,
   },
+  {
+    slug: 'techcreator',
+    title: 'TechCreator',
+    description:
+      'A full-featured software development and digital growth platform designed to help businesses build powerful online presences. The website showcases services like custom software solutions, web and mobile app development, UX/UI design, SEO, and digital marketing with a clean, responsive, and professional user experience.',
+    previewImage: '/teacherator.png',
+    stack: ['Next.js', 'React', 'Tailwind CSS', 'Node.js', 'SEO'],
+    category: 'Business Website',
+    filters: ['Web Apps', 'Business Website', 'Freelance'],
+    links: [
+      {
+        label: 'Live Site',
+        href: 'https://www.techcreator.co/',
+        external: true,
+      },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/ismailkhan8585/TechCreator',
+        external: true,
+      },
+      {
+        label: 'Case Study',
+        href: '/work/techcreator',
+      },
+    ],
+    featured: true,
+    caseStudy: {
+      client: 'TechCreator',
+      role: 'Website Developer',
+      timeline: '5 weeks',
+      challenge:
+        'TechCreator needed a professional agency website that could explain a wide service catalog without overwhelming visitors. The site had to communicate custom software, web development, mobile apps, AI-first delivery, UI/UX, SEO, digital marketing, industries served, client trust, FAQs, and contact options in one clear conversion-focused experience.',
+      solution:
+        'I developed a polished business website that organizes TechCreator around a clear digital-transformation message. The experience presents strong hero messaging, service sections, technology expertise, project workflow, product offerings, industry pages, social proof, FAQs, and direct calls to action so potential clients can quickly understand the company and start a conversation.',
+      features: [
+        'Conversion-focused homepage with strong agency positioning and clear calls to action',
+        'Service coverage for web development, mobile app development, UI/UX, SEO, digital marketing, QA, DevOps, and software maintenance',
+        'Technology and process sections that explain the company workflow from roadmap planning through launch and support',
+        'Industry-focused content for e-commerce, real estate, hospitality, restaurants, healthcare, and green energy clients',
+        'Trust-building sections for client proof, FAQs, contact details, appointment booking, and quote requests',
+      ],
+      results:
+        'The final website gives TechCreator a credible and professional online presence that supports lead generation, explains its full-service offer, and positions the company as an AI-first technology partner for businesses that need scalable software, modern websites, and digital growth support.',
+    },
+  },
+
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);

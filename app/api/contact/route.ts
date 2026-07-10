@@ -50,21 +50,25 @@ export async function POST(req: Request) {
       );
     }
 
-    const { name, email, projectType, budget, message } = parsed.data;
+    const { name, email, projectType, message } = parsed.data;
 
     const emailBody = `
-New Inquiry
-------------
-Name: ${name}
-Email: ${email}
-Project Type: ${projectType}
-${budget ? `Budget: ${budget}` : ''}
+New contact form submission:
+
+Name:
+${name}
+
+Email:
+${email}
+
+Project Type:
+${projectType}
 
 Message:
 ${message}
     `.trim();
 
-    if (!env.RESEND_API_KEY) {
+    if (!env.RESEND_API_KEY || !env.FROM_EMAIL) {
       return NextResponse.json(
         { error: 'Email service not configured.' },
         { status: 503 }
@@ -75,10 +79,11 @@ ${message}
     const resend = new Resend(env.RESEND_API_KEY);
 
     await resend.emails.send({
-      from: 'contact@muhammadismail.dev',
+      from: env.FROM_EMAIL,
       to: env.CONTACT_EMAIL,
-      subject: `New ${projectType} inquiry from ${name}`,
+      subject: 'New Project Inquiry from Portfolio Website',
       text: emailBody,
+      replyTo: email,
     });
 
     return NextResponse.json({ success: true });
