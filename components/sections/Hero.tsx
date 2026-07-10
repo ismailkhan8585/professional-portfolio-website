@@ -145,12 +145,6 @@ const techStack = [
 ];
 
 function CodeEditorMockup() {
-  const code = `const developer = {
-  name: "Muhammad Ismail",
-  stack: ["React", "Next.js", "AI Video", "Social Media"],
-  status: "available",
-};`;
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -167,41 +161,15 @@ function CodeEditorMockup() {
         </span>
       </div>
       <div className="p-4 font-mono text-xs sm:text-sm">
-        <TypingAnimation text={code} />
+        <pre className="whitespace-pre-wrap leading-relaxed text-text-primary">
+          <span className="text-purple-400">const</span> developer = {'{\n'}
+          {'  '}<span className="text-purple-400">name</span>: <span className="text-emerald-300">&quot;Muhammad Ismail&quot;</span>,
+          {'\n  '}<span className="text-purple-400">stack</span>: [
+          <span className="text-emerald-300">&quot;React&quot;</span>, <span className="text-emerald-300">&quot;Next.js&quot;</span>, <span className="text-emerald-300">&quot;AI Video&quot;</span>, <span className="text-emerald-300">&quot;Social Media&quot;</span>],
+          {'\n  '}<span className="text-purple-400">status</span>: <span className="text-emerald-300">&quot;available&quot;</span>,
+          {'\n'}{'};'}
+        </pre>
       </div>
     </motion.div>
-  );
-}
-
-function TypingAnimation({ text }: { text: string }) {
-  return (
-    <motion.pre
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.8 }}
-      className="whitespace-pre-wrap leading-relaxed text-text-primary"
-    >
-      {text.split('').map((char, i) => (
-        <motion.span
-          key={i}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 + i * 0.02 }}
-          className={
-            char === '"'
-              ? 'text-emerald-400'
-              : /["']/.test(text[i - 1] || '') && /["']/.test(text[i + 1] || '')
-              ? 'text-emerald-300'
-              : ['const', 'name', 'stack', 'status', 'available'].some((w) =>
-                  text.slice(i, i + w.length) === w
-                )
-              ? 'text-purple-400'
-              : 'text-text-primary'
-          }
-        >
-          {char}
-        </motion.span>
-      ))}
-    </motion.pre>
   );
 }

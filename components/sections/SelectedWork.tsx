@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { featuredProjects } from '@/lib/projects';

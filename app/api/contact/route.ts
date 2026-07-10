@@ -3,6 +3,7 @@ import { contactFormSchema } from '@/lib/validations';
 import { env } from '@/lib/env';
 
 const ipStore = new Map<string, { count: number; resetAt: number }>();
+const fromEmailPattern = /^([^<>\s@]+@[^<>\s@]+\.[^<>\s@]+|[^<>]+ <[^<>\s@]+@[^<>\s@]+\.[^<>\s@]+>)$/;
 
 function getClientIp(req: Request): string {
   const forwarded = req.headers.get('x-forwarded-for');
@@ -24,6 +25,10 @@ function checkRateLimit(ip: string): boolean {
   if (record.count >= maxRequests) return false;
   record.count += 1;
   return true;
+}
+
+function isValidFromEmail(value: string | undefined): value is string {
+  return Boolean(value && fromEmailPattern.test(value));
 }
 
 export async function POST(req: Request) {
@@ -69,6 +74,17 @@ ${message}
     `.trim();
 
     if (!env.RESEND_API_KEY || !env.FROM_EMAIL) {
+      console.error('Contact form email is not configured. Missing RESEND_API_KEY or FROM_EMAIL.');
+      return NextResponse.json(
+        { error: 'Email service not configured.' },
+        { status: 503 }
+      );
+    }
+
+    if (!isValidFromEmail(env.FROM_EMAIL)) {
+      console.error(
+        'Contact form FROM_EMAIL is invalid. Use email@example.com or Name <email@example.com>.'
+      );
       return NextResponse.json(
         { error: 'Email service not configured.' },
         { status: 503 }
@@ -78,7 +94,7 @@ ${message}
     const Resend = (await import('resend')).Resend;
     const resend = new Resend(env.RESEND_API_KEY);
 
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: env.FROM_EMAIL,
       to: env.CONTACT_EMAIL,
       subject: 'New Project Inquiry from Portfolio Website',
@@ -86,8 +102,17 @@ ${message}
       replyTo: email,
     });
 
+    if (error) {
+      console.error('Resend contact email failed:', error);
+      return NextResponse.json(
+        { error: 'Something went wrong. Please try again.' },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (error) {
+    console.error('Contact form request failed:', error);
     return NextResponse.json(
       { error: 'Something went wrong. Please try again.' },
       { status: 500 }

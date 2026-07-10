@@ -126,7 +126,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [],
   safelist: [
     'bg-emerald-500',
     'bg-emerald-600',

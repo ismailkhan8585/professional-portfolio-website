@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { inter, spaceGrotesk, jetbrainsMono } from '@/lib/fonts';
 import { Toaster } from 'sonner';
 import { NAME, ROLE, DOMAIN } from '@/lib/constants';
@@ -9,8 +10,27 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: `${NAME} — Full-Stack Web & Mobile Developer`,
-  description: `${ROLE}. Available for freelance projects and full-time opportunities. 25+ projects delivered.`,
+  title: {
+    default: `${NAME} - Full-Stack Developer, Next.js Developer & Digital Solutions Specialist`,
+    template: `%s | ${NAME}`,
+  },
+  description:
+    'Portfolio of Muhammad Ismail, a full-stack JavaScript, Next.js, mobile app, AI automation, and digital solutions developer building fast production-ready web and mobile products.',
+  keywords: [
+    'Muhammad Ismail',
+    'full-stack developer',
+    'Next.js developer',
+    'React developer',
+    'mobile app developer',
+    'JavaScript developer',
+    'TypeScript developer',
+    'software developer portfolio',
+    'digital solutions services',
+    'AI automation specialist',
+  ],
+  authors: [{ name: NAME, url: DOMAIN }],
+  creator: NAME,
+  publisher: NAME,
   metadataBase: new URL(DOMAIN),
   alternates: {
     canonical: '/',
@@ -20,22 +40,22 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: DOMAIN,
     siteName: NAME,
-    title: `${NAME} — Full-Stack Web & Mobile Developer`,
-    description: `${ROLE}. Available for freelance projects and full-time opportunities.`,
+    title: `${NAME} - Full-Stack Developer & Digital Solutions Specialist`,
+    description: `${ROLE}. Portfolio, case studies, services, and contact for production-ready web and mobile development.`,
     images: [
       {
-        url: `${DOMAIN}/og.png`,
-        width: 1200,
-        height: 630,
-        alt: `${NAME} — Portfolio`,
+        url: '/ismail.png',
+        width: 1024,
+        height: 1536,
+        alt: `${NAME} portfolio portrait`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${NAME} — Full-Stack Web & Mobile Developer`,
+    title: `${NAME} - Full-Stack Developer & Digital Solutions Specialist`,
     description: `${ROLE}. Available for freelance projects and full-time opportunities.`,
-    images: [`${DOMAIN}/og.png`],
+    images: ['/ismail.png'],
   },
   robots: {
     index: true,
@@ -73,6 +93,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
           <Toaster position="bottom-right" richColors />
+          <SpeedInsights />
         </Providers>
       </body>
     </html>

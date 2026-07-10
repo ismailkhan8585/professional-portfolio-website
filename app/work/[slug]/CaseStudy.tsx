@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { ArrowUpRight, ArrowLeft, ArrowRight } from 'lucide-react';
 import { allProjects } from '@/lib/projects';

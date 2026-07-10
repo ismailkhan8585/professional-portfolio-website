@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { Download } from 'lucide-react';
@@ -19,7 +17,6 @@ export default function About() {
                 height={1536}
                 sizes="(min-width: 1024px) 360px, 320px"
                 className="h-full w-full rounded-md object-cover"
-                priority
               />
             </div>
           </FadeIn>

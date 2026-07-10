@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { Globe, Smartphone, Rocket, Code2, Sparkles, Check, ArrowRight } from 'lucide-react';
 import FadeIn from '@/components/animations/FadeIn';

@@ -1,5 +1,3 @@
-'use client';
-
 import CountUp from '@/components/animations/CountUp';
 
 const stats = [
