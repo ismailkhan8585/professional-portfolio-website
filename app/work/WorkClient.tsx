@@ -48,9 +48,13 @@ export default function WorkClient() {
         </div>
       </FadeIn>
 
-      <StaggerContainer className="grid gap-5 sm:grid-cols-2 lg:gap-6" delay={0.05}>
+      <StaggerContainer
+        className="grid min-w-0 grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6"
+        delay={0.05}
+        viewportAmount={0.01}
+      >
         {filtered.map((project) => (
-          <StaggerItem key={project.slug}>
+          <StaggerItem key={project.slug} className="min-w-0">
             <div className="group flex h-full flex-col overflow-hidden rounded-lg border border-customBorder bg-bg-card transition-all hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-lg">
               <ProjectPreview
                 title={project.title}

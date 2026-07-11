@@ -22,11 +22,15 @@ export default function SelectedWork() {
           </div>
         </FadeIn>
 
-        <StaggerContainer className="grid gap-6 sm:gap-8" delay={0.08}>
+        <StaggerContainer
+          className="grid min-w-0 grid-cols-1 gap-6 sm:gap-8"
+          delay={0.08}
+          viewportAmount={0.01}
+        >
           {featuredProjects.map((project, index) => (
-            <StaggerItem key={project.slug}>
+            <StaggerItem key={project.slug} className="min-w-0">
               <div
-                className="grid overflow-hidden rounded-lg border border-customBorder bg-bg-card shadow-lg shadow-black/5 lg:grid-cols-2"
+                className="grid min-w-0 grid-cols-1 overflow-hidden rounded-lg border border-customBorder bg-bg-card shadow-lg shadow-black/5 lg:grid-cols-2"
               >
                 <div className={index % 2 === 1 ? 'lg:order-2' : undefined}>
                   <ProjectPreview

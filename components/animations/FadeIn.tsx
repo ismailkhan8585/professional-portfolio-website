@@ -19,6 +19,7 @@ interface StaggerProps {
   className?: string;
   delay?: number;
   staggerDelay?: number;
+  viewportAmount?: number;
   as?: keyof JSX.IntrinsicElements;
 }
 
@@ -68,6 +69,7 @@ export function StaggerContainer({
   className = '',
   delay = 0,
   staggerDelay = 0.08,
+  viewportAmount = 0.16,
   as = 'div',
 }: StaggerProps) {
   const MotionTag = m[as as 'div'];
@@ -87,7 +89,7 @@ export function StaggerContainer({
       <MotionTag
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-80px', amount: 0.16 }}
+        viewport={{ once: true, margin: '-80px', amount: viewportAmount }}
         variants={variants}
         className={className}
       >
