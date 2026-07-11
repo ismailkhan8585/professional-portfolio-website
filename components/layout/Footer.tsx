@@ -1,12 +1,11 @@
-'use client';
-
 import Link from 'next/link';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { NAME, ROLE, SOCIALS, EMAIL } from '@/lib/constants';
+import { RevealSection } from '@/components/animations/FadeIn';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-customBorder bg-bg">
+    <RevealSection as="footer" className="border-t border-customBorder bg-bg">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-8 text-center md:flex-row md:text-left">
           <div className="flex flex-col items-center gap-1 md:items-start">
@@ -70,6 +69,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </RevealSection>
   );
 }

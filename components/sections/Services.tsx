@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Globe, Smartphone, Rocket, Code2, Sparkles, Check, ArrowRight } from 'lucide-react';
-import FadeIn from '@/components/animations/FadeIn';
+import FadeIn, { StaggerContainer, StaggerItem } from '@/components/animations/FadeIn';
 
 const services = [
   {
@@ -57,9 +57,9 @@ export default function Services() {
           </div>
         </FadeIn>
 
-        <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-          {services.map((service, i) => (
-            <FadeIn key={service.title} delay={i * 0.1}>
+        <StaggerContainer className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6" delay={0.08}>
+          {services.map((service) => (
+            <StaggerItem key={service.title}>
               <div className="group flex h-full flex-col rounded-lg border border-customBorder bg-bg-card p-5 transition-all hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-lg sm:p-6">
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400">
                   <service.icon className="h-6 w-6" />
@@ -93,9 +93,9 @@ export default function Services() {
                   </Link>
                 </div>
               </div>
-            </FadeIn>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

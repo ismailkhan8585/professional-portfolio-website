@@ -6,7 +6,7 @@ import {
   Palette,
   Sparkles,
 } from 'lucide-react';
-import FadeIn from '@/components/animations/FadeIn';
+import FadeIn, { StaggerContainer, StaggerItem } from '@/components/animations/FadeIn';
 
 const skillCategories = [
   {
@@ -66,9 +66,9 @@ export default function Skills() {
           </div>
         </FadeIn>
 
-        <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-          {skillCategories.map((category, i) => (
-            <FadeIn key={category.title} delay={i * 0.1}>
+        <StaggerContainer className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6" delay={0.08}>
+          {skillCategories.map((category) => (
+            <StaggerItem key={category.title}>
               <div className="group h-full rounded-lg border border-customBorder bg-bg-card p-5 transition-colors hover:border-emerald-500/30 sm:p-6">
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400">
                   <category.icon className="h-5 w-5" />
@@ -87,9 +87,9 @@ export default function Skills() {
                   ))}
                 </div>
               </div>
-            </FadeIn>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         <FadeIn delay={0.3}>
           <div className="mt-8 rounded-lg border border-dashed border-customBorder bg-bg-card p-5 sm:mt-12 sm:p-6">

@@ -54,8 +54,9 @@ export default function ProjectPreview({
           <Image
             src={previewImage}
             alt={`${title} screenshot preview`}
-            width={800}
-            height={450}
+            width={1200}
+            height={675}
+            loading="lazy"
             placeholder="blur"
             blurDataURL={blurDataURL}
             sizes="(min-width: 1280px) 560px, (min-width: 1024px) 44vw, (min-width: 640px) 70vw, 82vw"

@@ -29,7 +29,7 @@ export const projects: Project[] = [
     title: 'IlmTrack School Management System',
     description:
       'A Pakistan-focused school management SaaS for attendance, fees, results, reports, and institution-wide analytics.',
-   previewImage: '/school.png',
+   previewImage: '/school.webp',
     stack: ['Next.js', 'TypeScript', 'PostgreSQL', "cloudinary", 'Recharts'],
     category: 'Web App',
     filters: ['Web Apps', 'Freelance'],
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     title: 'E-Commerce web & Mobile App',
     description:
       'Cross-platform shopping app with real-time inventory sync, payment integration, and push notifications — built for a retail client.',
-    previewImage: '/organocity.png',
+    previewImage: '/organocity.webp',
     stack: ['Next.js',  'postgreSQL', 'cloudinary'],
     category: 'Web & Mobile App',
     filters: ['Web & Mobile ', 'Freelance'],
@@ -79,7 +79,7 @@ export const projects: Project[] = [
   title: 'Royal Furniture E-Commerce Website',
   description:
     'A premium furniture e-commerce platform built for Royal Furniture, featuring product categories, custom orders, wishlist, cart, WhatsApp support, easy payments, nationwide delivery, and a modern responsive shopping experience.',
-  previewImage: '/Royal-furt.png',
+  previewImage: '/royal-furt.webp',
   stack: ['Next.js', 'Prisma', 'PostgreSQL', 'Cloudinary'],
   category: 'E-Commerce Web App',
   filters: ['Web Apps', 'E-Commerce', 'Freelance'],
@@ -107,7 +107,7 @@ export const projects: Project[] = [
     description:
       'TaxiRapport is a mobile application built with React Native to help taxi drivers track daily trips, driving activity, and earnings in a structured and efficient way. The app allows users to log trips, monitor performance summaries, and review historical driving data through a clean and user-friendly interface. It focuses on reliability, smooth navigation, and real-time data management to support drivers in managing their work more effectively.',
     previewImage:
-      '/TaxiRapport.png',
+      '/taxirapport.webp',
     stack: ['React Native','CLI','Firebase','Redux'],
     category: 'Mobile App',
     filters: ['Mobile Apps', 'Freelance'],
@@ -142,7 +142,7 @@ export const projects: Project[] = [
     description:
       'A professional digital agency website for Zayvora Tech, positioning the company as a complete growth partner for websites, e-commerce stores, paid ads, branding, content, social media management, and long-term business support.',
     previewImage:
-      '/zayvora.png',
+      '/zayvora.webp',
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Responsive UI'],
     category: 'Business Website',
     filters: ['Web Apps', 'Freelance'],
@@ -177,7 +177,7 @@ export const projects: Project[] = [
     description:
       'Managed full social media presence and produced AI-generated marketing videos and posts for OrganoCity using Gemini AI, InVideo AI, and Grok AI — covering content strategy, video production, and cross-platform publishing.',
     previewImage:
-      '/socail .png',
+      '/socail.webp',
     stack: ['Gemini AI', 'InVideo AI', 'Grok AI', 'Social Media Management'],
     category: 'AI Video & Marketing',
     filters: ['AI Video & Marketing', 'Freelance'],
@@ -193,7 +193,7 @@ export const projects: Project[] = [
     title: 'TechCreator',
     description:
       'A full-featured software development and digital growth platform designed to help businesses build powerful online presences. The website showcases services like custom software solutions, web and mobile app development, UX/UI design, SEO, and digital marketing with a clean, responsive, and professional user experience.',
-    previewImage: '/teacherator.png',
+    previewImage: '/teacherator.webp',
     stack: ['Next.js', 'React', 'Tailwind CSS', 'Node.js', 'SEO'],
     category: 'Business Website',
     filters: ['Web Apps', 'Business Website', 'Freelance'],

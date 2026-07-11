@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import { NAME } from '@/lib/constants';
@@ -92,24 +91,14 @@ export default function Navbar() {
         </div>
       </header>
 
-      <AnimatePresence>
-        {mobileOpen && (
-          <>
-            <motion.button
-              aria-label="Close menu backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setMobileOpen(false)}
-              className="fixed inset-0 z-[55] bg-black/45 backdrop-blur-sm md:hidden"
-            />
-            <motion.div
-              initial={{ opacity: 0, y: -10, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.98 }}
-              transition={{ type: 'tween', duration: 0.2 }}
-              className="fixed left-3 right-3 top-20 z-[60] rounded-lg border border-customBorder bg-bg-card p-4 shadow-2xl shadow-black/30 md:hidden"
-            >
+      {mobileOpen && (
+        <>
+          <button
+            aria-label="Close menu backdrop"
+            onClick={() => setMobileOpen(false)}
+            className="fixed inset-0 z-[55] bg-black/45 backdrop-blur-sm md:hidden"
+          />
+          <div className="fixed left-3 right-3 top-20 z-[60] rounded-lg border border-customBorder bg-bg-card p-4 shadow-2xl shadow-black/30 md:hidden">
               <div className="mb-4 flex items-center justify-between">
                 <span className="font-heading text-sm font-semibold text-text-muted">
                   Navigation
@@ -152,10 +141,9 @@ export default function Navbar() {
                   Let&apos;s Talk
                 </Link>
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+          </div>
+        </>
+      )}
     </>
   );
 }

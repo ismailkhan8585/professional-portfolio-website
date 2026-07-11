@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { allProjects } from '@/lib/projects';
-import FadeIn from '@/components/animations/FadeIn';
+import FadeIn, { StaggerContainer, StaggerItem } from '@/components/animations/FadeIn';
 import ProjectPreview from '@/components/ProjectPreview';
 
 const filters = ['All', 'Web Apps', 'Mobile Apps', 'AI Video & Marketing', 'Freelance', 'Personal'];
@@ -48,9 +48,9 @@ export default function WorkClient() {
         </div>
       </FadeIn>
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:gap-6">
-        {filtered.map((project, i) => (
-          <FadeIn key={project.slug} delay={i * 0.08}>
+      <StaggerContainer className="grid gap-5 sm:grid-cols-2 lg:gap-6" delay={0.05}>
+        {filtered.map((project) => (
+          <StaggerItem key={project.slug}>
             <div className="group flex h-full flex-col overflow-hidden rounded-lg border border-customBorder bg-bg-card transition-all hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-lg">
               <ProjectPreview
                 title={project.title}
@@ -94,9 +94,9 @@ export default function WorkClient() {
                 </div>
               </div>
             </div>
-          </FadeIn>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
     </div>
   );
 }

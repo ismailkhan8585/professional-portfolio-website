@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ArrowUpRight, ArrowLeft, ArrowRight } from 'lucide-react';
 import { allProjects } from '@/lib/projects';
 import type { Project } from '@/lib/projects';
-import FadeIn from '@/components/animations/FadeIn';
+import FadeIn, { StaggerContainer, StaggerItem } from '@/components/animations/FadeIn';
 import ProjectPreview from '@/components/ProjectPreview';
 
 interface CaseStudyProps {
@@ -68,34 +68,32 @@ export default function CaseStudy({ project }: CaseStudyProps) {
         />
       </FadeIn>
 
-      <FadeIn delay={0.15}>
-        <div className="mb-10 grid gap-3 sm:mb-12 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-lg border border-customBorder bg-bg-card p-4">
+      <StaggerContainer className="mb-10 grid gap-3 sm:mb-12 sm:grid-cols-2 lg:grid-cols-4" delay={0.1}>
+          <StaggerItem className="rounded-lg border border-customBorder bg-bg-card p-4">
             <span className="block text-xs text-text-muted">Client</span>
             <span className="mt-1 block font-medium text-text-primary">
               {caseStudy.client}
             </span>
-          </div>
-          <div className="rounded-lg border border-customBorder bg-bg-card p-4">
+          </StaggerItem>
+          <StaggerItem className="rounded-lg border border-customBorder bg-bg-card p-4">
             <span className="block text-xs text-text-muted">My Role</span>
             <span className="mt-1 block font-medium text-text-primary">
               {caseStudy.role}
             </span>
-          </div>
-          <div className="rounded-lg border border-customBorder bg-bg-card p-4">
+          </StaggerItem>
+          <StaggerItem className="rounded-lg border border-customBorder bg-bg-card p-4">
             <span className="block text-xs text-text-muted">Timeline</span>
             <span className="mt-1 block font-medium text-text-primary">
               {caseStudy.timeline}
             </span>
-          </div>
-          <div className="rounded-lg border border-customBorder bg-bg-card p-4">
+          </StaggerItem>
+          <StaggerItem className="rounded-lg border border-customBorder bg-bg-card p-4">
             <span className="block text-xs text-text-muted">Stack</span>
             <span className="mt-1 block font-medium text-text-primary">
               {project.stack.slice(0, 2).join(', ')}
             </span>
-          </div>
-        </div>
-      </FadeIn>
+          </StaggerItem>
+      </StaggerContainer>
 
       <FadeIn delay={0.2}>
         <div className="mb-10 grid gap-3 sm:mb-12 sm:flex sm:flex-wrap">
@@ -114,27 +112,26 @@ export default function CaseStudy({ project }: CaseStudyProps) {
         </div>
       </FadeIn>
 
-      <FadeIn delay={0.25}>
-        <div className="flex flex-col gap-10 sm:gap-12">
-          <div>
+      <StaggerContainer className="flex flex-col gap-10 sm:gap-12" delay={0.08}>
+          <StaggerItem>
             <h2 className="font-heading text-2xl font-bold text-text-primary">
               The Challenge
             </h2>
             <p className="mt-4 leading-7 text-text-secondary">
               {caseStudy.challenge}
             </p>
-          </div>
+          </StaggerItem>
 
-          <div>
+          <StaggerItem>
             <h2 className="font-heading text-2xl font-bold text-text-primary">
               The Solution
             </h2>
             <p className="mt-4 leading-7 text-text-secondary">
               {caseStudy.solution}
             </p>
-          </div>
+          </StaggerItem>
 
-          <div>
+          <StaggerItem>
             <h2 className="font-heading text-2xl font-bold text-text-primary">
               Key Features
             </h2>
@@ -143,18 +140,17 @@ export default function CaseStudy({ project }: CaseStudyProps) {
                 <li key={feature}>{feature}</li>
               ))}
             </ul>
-          </div>
+          </StaggerItem>
 
-          <div>
+          <StaggerItem>
             <h2 className="font-heading text-2xl font-bold text-text-primary">
               Results
             </h2>
             <p className="mt-4 leading-7 text-text-secondary">
               {caseStudy.results}
             </p>
-          </div>
-        </div>
-      </FadeIn>
+          </StaggerItem>
+      </StaggerContainer>
 
       <FadeIn delay={0.3}>
         <div className="mt-14 grid gap-4 border-t border-customBorder pt-8 sm:mt-16 sm:grid-cols-2">

@@ -44,9 +44,9 @@ export const metadata: Metadata = {
     description: `${ROLE}. Portfolio, case studies, services, and contact for production-ready web and mobile development.`,
     images: [
       {
-        url: '/ismail.png',
-        width: 1024,
-        height: 1536,
+        url: '/ismail.webp',
+        width: 640,
+        height: 960,
         alt: `${NAME} portfolio portrait`,
       },
     ],
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${NAME} - Full-Stack Developer & Digital Solutions Specialist`,
     description: `${ROLE}. Available for freelance projects and full-time opportunities.`,
-    images: ['/ismail.png'],
+    images: ['/ismail.webp'],
   },
   robots: {
     index: true,

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { featuredProjects } from '@/lib/projects';
-import FadeIn from '@/components/animations/FadeIn';
+import FadeIn, { StaggerContainer, StaggerItem } from '@/components/animations/FadeIn';
 import ProjectPreview from '@/components/ProjectPreview';
 
 export default function SelectedWork() {
@@ -22,9 +22,9 @@ export default function SelectedWork() {
           </div>
         </FadeIn>
 
-        <div className="grid gap-6 sm:gap-8">
+        <StaggerContainer className="grid gap-6 sm:gap-8" delay={0.08}>
           {featuredProjects.map((project, index) => (
-            <FadeIn key={project.slug} delay={0.1}>
+            <StaggerItem key={project.slug}>
               <div
                 className="grid overflow-hidden rounded-lg border border-customBorder bg-bg-card shadow-lg shadow-black/5 lg:grid-cols-2"
               >
@@ -76,9 +76,9 @@ export default function SelectedWork() {
                   </div>
                 </div>
               </div>
-            </FadeIn>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         <FadeIn delay={0.2}>
           <div className="mt-16 text-center">

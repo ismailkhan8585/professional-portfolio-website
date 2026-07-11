@@ -27,10 +27,10 @@ export default function AboutPage() {
         <FadeIn className="flex-shrink-0">
           <div className="relative mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden rounded-lg border border-customBorder bg-bg-card p-3 lg:mx-0">
             <Image
-              src="/ismail.png"
+              src="/ismail.webp"
               alt="Muhammad Ismail portrait"
-              width={1024}
-              height={1536}
+              width={640}
+              height={960}
               sizes="(min-width: 1024px) 280px, 320px"
               className="h-full w-full rounded-md object-cover"
               priority

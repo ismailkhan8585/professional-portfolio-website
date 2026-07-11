@@ -11,10 +11,11 @@ export default function About() {
           <FadeIn className="flex-1">
             <div className="relative mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden rounded-lg border border-customBorder bg-bg-card p-3 sm:max-w-sm lg:mx-0">
               <Image
-                src="/ismail.png"
+                src="/ismail.webp"
                 alt="Muhammad Ismail portrait"
-                width={1024}
-                height={1536}
+                width={640}
+                height={960}
+                loading="lazy"
                 sizes="(min-width: 1024px) 360px, 320px"
                 className="h-full w-full rounded-md object-cover"
               />

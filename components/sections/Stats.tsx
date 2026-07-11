@@ -1,4 +1,5 @@
 import CountUp from '@/components/animations/CountUp';
+import { StaggerContainer, StaggerItem } from '@/components/animations/FadeIn';
 
 const stats = [
   { value: 25, suffix: '+', label: 'Projects Delivered' },
@@ -11,9 +12,9 @@ export default function Stats() {
   return (
     <section className="border-y border-customBorder bg-bg-card/35 py-8 sm:py-10 lg:py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-4">
+        <StaggerContainer className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-4" staggerDelay={0.06}>
           {stats.map((stat) => (
-            <div
+            <StaggerItem
               key={stat.label}
               className="flex min-h-28 flex-col items-center justify-center rounded-lg border border-customBorder bg-bg px-3 py-5 text-center sm:min-h-32"
             >
@@ -21,9 +22,9 @@ export default function Stats() {
                 <CountUp end={stat.value} suffix={stat.suffix} duration={1.5} />
               </span>
               <span className="mt-2 text-sm leading-snug text-text-muted">{stat.label}</span>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
