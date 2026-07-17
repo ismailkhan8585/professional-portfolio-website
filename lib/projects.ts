@@ -66,7 +66,7 @@ export const projects: Project[] = [
     previewImage: '/organocity.webp',
     stack: ['Next.js',  'postgreSQL', 'cloudinary'],
     category: 'Web & Mobile App',
-    filters: ['Web & Mobile ', 'Freelance'],
+    filters: ['Web Apps', 'Mobile Apps', 'Freelance'],
     links: [
       // { label: 'App Store', href: '#', external: true },
       { label: 'Case Study', href: 'https://organocity.com/' },
@@ -233,6 +233,33 @@ export const projects: Project[] = [
         'The final website gives TechCreator a credible and professional online presence that supports lead generation, explains its full-service offer, and positions the company as an AI-first technology partner for businesses that need scalable software, modern websites, and digital growth support.',
     },
   },
+  {
+  slug: 'saudi-property-platform',
+  title: 'Saudi Property Platform',
+  description:
+    'A modern bilingual real-estate platform for Saudi Arabia, featuring Arabic and English support, RTL and LTR layouts, advanced property search, sale and rental listings, detailed property pages, and direct WhatsApp enquiries.',
+  previewImage: '/saudi-property.webp',
+  stack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
+  category: 'Real Estate Web App',
+  filters: ['Web Apps', 'Real Estate', 'Freelance'],
+  links: [
+    {
+      label: 'Live Site',
+      href: 'https://saudi-property-platform.vercel.app/',
+      external: true,
+    },
+    {
+      label: 'Case Study',
+      href: '/work/saudi-property-platform',
+    },
+    {
+      label: 'GitHub',
+      href: 'https://github.com/ismailkhan8585/saudi-property-platform',
+      external: true,
+    },
+  ],
+  featured: true,
+},
 
 ];
 

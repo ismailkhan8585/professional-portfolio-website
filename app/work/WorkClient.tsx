@@ -7,10 +7,12 @@ import { allProjects } from '@/lib/projects';
 import FadeIn, { StaggerContainer, StaggerItem } from '@/components/animations/FadeIn';
 import ProjectPreview from '@/components/ProjectPreview';
 
-const filters = ['All', 'Web Apps', 'Mobile Apps', 'AI Video & Marketing', 'Freelance', 'Personal'];
+const filters = ['All', 'Web Apps', 'Mobile Apps', 'AI Video & Marketing', 'Freelance', 'Personal'] as const;
+
+type ProjectFilter = (typeof filters)[number];
 
 export default function WorkClient() {
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState<ProjectFilter>('All');
 
   const filtered =
     activeFilter === 'All'
@@ -35,7 +37,9 @@ export default function WorkClient() {
           {filters.map((filter) => (
             <button
               key={filter}
+              type="button"
               onClick={() => setActiveFilter(filter)}
+              aria-pressed={activeFilter === filter}
               className={`min-h-10 shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 activeFilter === filter
                   ? 'bg-emerald-500 text-black'
@@ -101,6 +105,12 @@ export default function WorkClient() {
           </StaggerItem>
         ))}
       </StaggerContainer>
+
+      {filtered.length === 0 && (
+        <p className="rounded-lg border border-customBorder bg-bg-card px-5 py-10 text-center text-text-secondary">
+          No projects found in {activeFilter} yet.
+        </p>
+      )}
     </div>
   );
 }
