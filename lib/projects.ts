@@ -58,22 +58,37 @@ export const projects: Project[] = [
         'The final product presents IlmTrack as a professional SaaS platform rather than a simple admin panel. It gives school owners a clear first impression, demonstrates the operational value of the software, and provides a scalable foundation for future modules such as parent portals, online admissions, notifications, and payment workflows.',
     },
   },
-  {
-    slug: 'ecommerce-mobile',
-    title: 'E-Commerce web & Mobile App',
-    description:
-      'Cross-platform shopping app with real-time inventory sync, payment integration, and push notifications — built for a retail client.',
-    previewImage: '/organocity.webp',
-    stack: ['Next.js',  'postgreSQL', 'cloudinary'],
-    category: 'Web & Mobile App',
-    filters: ['Web Apps', 'Mobile Apps', 'Freelance'],
-    links: [
-      // { label: 'App Store', href: '#', external: true },
-      { label: 'Case Study', href: 'https://organocity.com/' },
-      { label: 'GitHub', href: 'https://github.com/ismailkhan8585/Organocity', external: true },
-    ],
-    featured: true,
-  },
+ {
+  slug: 'hunza-gold',
+  title: 'Hunza Gold — E-Commerce PWA',
+  description:
+    'A modern e-commerce website and installable PWA for natural honey, dry fruits, attars, and gift products. Features an AI shopping assistant, product search, real-time inventory, order tracking, and WhatsApp support.',
+  previewImage: '/hunza.png',
+  stack: [
+    'Next.js',
+    'TypeScript',
+    'PostgreSQL',
+    'Prisma',
+    'Cloudinary',
+    'PWA',
+    'AI Chatbot',
+  ],
+  category: 'E-Commerce Web App',
+  filters: ['Web Apps', 'PWA', 'AI', 'Freelance'],
+  links: [
+    {
+      label: 'Live Website',
+      href: 'https://hunza-gold-honey-shop.vercel.app/',
+      external: true,
+    },
+    {
+      label: 'GitHub',
+      href: 'https://github.com/ismailkhan8585/Hunza-Gold-Honey-shop',
+      external: true,
+    },
+  ],
+  featured: true,
+},
  {
   slug: 'royal-furniture-ecommerce',
   title: 'Royal Furniture E-Commerce Website',
