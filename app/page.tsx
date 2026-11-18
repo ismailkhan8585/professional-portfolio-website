@@ -9,7 +9,7 @@ import Services from '@/components/sections/Services';
 import { DOMAIN, NAME, ROLE } from '@/lib/constants';
 
 const Contact = dynamic(() => import('@/components/sections/Contact'), {
-  loading: () => <section id="contact" className="py-16 sm:py-20 lg:py-24" />,
+  loading: () => <section id="contact" className="py-20 sm:py-28 lg:py-36" />,
 });
 
 export const metadata: Metadata = {

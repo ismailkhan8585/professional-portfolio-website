@@ -3,7 +3,7 @@ import { DOMAIN } from '@/lib/constants';
 import { allProjects } from '@/lib/projects';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/work', '/about', '/resume'].map((route) => ({
+  const routes = ['', '/work', '/about', '/skills', '/services', '/contact', '/resume'].map((route) => ({
     url: `${DOMAIN}${route}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,

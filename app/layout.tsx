@@ -1,13 +1,14 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { inter, spaceGrotesk, jetbrainsMono } from '@/lib/fonts';
+import { sans, display, serif, mono } from '@/lib/fonts';
 import { Toaster } from 'sonner';
 import { NAME, ROLE, DOMAIN } from '@/lib/constants';
 import { personJsonLd } from '@/lib/seo';
 import Providers from './providers';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import ScrollProgress from '@/components/animations/ScrollProgress';
 
 export const metadata: Metadata = {
   title: {
@@ -79,7 +80,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+      className={`${sans.variable} ${display.variable} ${serif.variable} ${mono.variable}`}
     >
       <body className="font-sans">
         <Providers>
@@ -89,6 +90,8 @@ export default function RootLayout({
               __html: JSON.stringify(personJsonLd()),
             }}
           />
+          <div className="grain" aria-hidden="true" />
+          <ScrollProgress />
           <Navbar />
           <main>{children}</main>
           <Footer />

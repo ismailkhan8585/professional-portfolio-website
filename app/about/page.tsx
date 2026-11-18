@@ -16,9 +16,9 @@ export default function AboutPage() {
     <div className="mx-auto max-w-4xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 lg:px-8 lg:pb-24">
       <FadeIn>
         <div className="mb-10 sm:mb-12">
-          <span className="font-mono text-sm text-emerald-400">{'// About'}</span>
-          <h1 className="mt-2 font-heading text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">
-            About Me
+          <span className="eyebrow">About</span>
+          <h1 className="display mt-5 text-5xl sm:text-7xl">
+            About <span className="serif-accent text-[1.08em]">me</span>
           </h1>
         </div>
       </FadeIn>
@@ -72,16 +72,16 @@ export default function AboutPage() {
               <div className="mt-6 flex flex-col gap-6">
                 {[
                   {
-                    role: 'Full-Stack Developer',
-                    company: 'Freelance',
-                    period: '2020 — Present',
-                    desc: 'Building web and mobile apps for clients worldwide. Delivered 25+ projects across SaaS, e-commerce, and internal tools.',
+                    role: 'Full Stack Developer',
+                    company: 'ZayvoraTech',
+                    period: 'Jan 2025 — Present',
+                    desc: 'Building responsive web applications and installable PWAs with Next.js, React.js, and TypeScript — including a multi-branch restaurant POS system, e-commerce stores, and a bilingual real estate platform.',
                   },
                   {
-                    role: 'AI Content Specialist',
-                    company: 'OrganoCity',
-                    period: '2023 — Present',
-                    desc: 'Managing social media presence and producing AI-generated marketing videos using Gemini AI, InVideo AI, and Grok AI.',
+                    role: 'Full Stack Developer',
+                    company: 'Techcreator',
+                    period: 'Aug 2021 — Jan 2025',
+                    desc: 'Delivered full-stack web and mobile applications using React.js, Next.js, React Native, Node.js, and Express.js, with REST APIs backed by MongoDB, PostgreSQL, Firebase, and Supabase.',
                   },
                 ].map((job) => (
                   <div
@@ -105,16 +105,32 @@ export default function AboutPage() {
           <FadeIn delay={0.25}>
             <div className="mt-10">
               <h2 className="font-heading text-2xl font-bold text-text-primary">Education</h2>
-              <div className="mt-4 rounded-lg border border-customBorder bg-bg-card p-5">
-                <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
-                  <h3 className="font-heading text-lg font-semibold text-text-primary">
-                    B.S. Computer Science
-                  </h3>
-                  <span className="font-mono text-xs text-text-muted">2016 — 2020</span>
-                </div>
-                <span className="mt-1 block text-sm text-text-secondary">
-                  [Abdulwali Khan University, Mardan, Pakistan]
-                </span>
+              <div className="mt-4 flex flex-col gap-4">
+                {[
+                  {
+                    degree: 'BS Computer Science',
+                    school: 'Abdul Wali Khan University, Mardan',
+                    period: '2022 — 2025',
+                  },
+                  {
+                    degree: 'FSc Pre-Engineering',
+                    school: 'Swabi College of Science, Swabi',
+                    period: '2019 — 2021',
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.degree}
+                    className="rounded-lg border border-customBorder bg-bg-card p-5"
+                  >
+                    <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
+                      <h3 className="font-heading text-lg font-semibold text-text-primary">
+                        {item.degree}
+                      </h3>
+                      <span className="font-mono text-xs text-text-muted">{item.period}</span>
+                    </div>
+                    <span className="mt-1 block text-sm text-text-secondary">{item.school}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </FadeIn>

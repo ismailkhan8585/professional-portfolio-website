@@ -51,7 +51,7 @@ export default function CountUp({
           observer.disconnect();
         }
       },
-      { rootMargin: '-50px' }
+      { rootMargin: '0px 0px -50px 0px' }
     );
 
     observer.observe(node);

@@ -5,8 +5,11 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { toast } from 'sonner';
-import { Github, Linkedin, Mail, Check, Loader2 } from 'lucide-react';
+import { ArrowUpRight, Check, Copy, Loader2 } from 'lucide-react';
 import FadeIn from '@/components/animations/FadeIn';
+import Words from '@/components/animations/Words';
+import Magnetic from '@/components/animations/Magnetic';
+import LocalTime from '@/components/LocalTime';
 import { EMAIL, SOCIALS } from '@/lib/constants';
 
 const contactSchema = z.object({
@@ -24,6 +27,11 @@ const contactSchema = z.object({
 });
 
 type ContactForm = z.infer<typeof contactSchema>;
+
+const socials = [
+  { href: SOCIALS.github, label: 'GitHub' },
+  { href: SOCIALS.linkedin, label: 'LinkedIn' },
+];
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -68,90 +76,117 @@ export default function Contact() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // fallback
+      // clipboard unavailable — the address is still visible to copy by hand
     }
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-20 lg:py-24">
+    <section
+      id="contact"
+      className="relative overflow-hidden border-t border-customBorder py-20 sm:py-28 lg:py-36"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-40 left-1/2 -z-10 h-[420px] w-[820px] max-w-[120vw] -translate-x-1/2 rounded-full bg-brand-ink/[0.1] blur-[130px]"
+      />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
-          <FadeIn className="flex-1">
-            <div className="flex flex-col gap-6">
+        <FadeIn duration={0.6}>
+          <span className="eyebrow">Get in touch</span>
+        </FadeIn>
+        <h2 className="display mt-5 text-[3rem] sm:text-7xl lg:text-[7.5rem]">
+          <Words text="Let's build something" />{' '}
+          <Words text="together." className="serif-accent text-[1.08em]" delay={0.18} />
+        </h2>
+
+        <div className="mt-12 grid gap-12 sm:mt-16 lg:grid-cols-12 lg:gap-8">
+          <FadeIn className="lg:col-span-5">
+            <div className="flex flex-col gap-8">
+              <p className="max-w-md text-base leading-7 text-text-secondary sm:text-lg sm:leading-8">
+                Whether you have a project in mind or an opportunity to discuss, I&apos;d love to
+                hear from you.
+              </p>
+
               <div>
-                <span className="font-mono text-sm text-emerald-400">
-                  {'// Get In Touch'}
-                </span>
-                <h2 className="mt-2 font-heading text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
-                  Let&apos;s build something together
-                </h2>
-                <p className="mt-4 max-w-xl text-base leading-7 text-text-secondary">
-                  Whether you have a project in mind or an opportunity to discuss, I&apos;d love to hear from you.
-                </p>
-              </div>
-
-              <div className="grid gap-3 sm:flex sm:items-center">
+                <span className="field-label">Email</span>
                 <button
+                  type="button"
                   onClick={copyEmail}
-                  className="inline-flex min-h-11 min-w-0 items-center justify-center gap-2 rounded-lg border border-customBorder bg-bg-card px-4 py-2.5 text-sm font-medium text-text-primary transition-colors hover:border-emerald-500/30 sm:justify-start"
+                  aria-label={`Copy email address ${EMAIL}`}
+                  className="group flex max-w-full items-center gap-3 text-left font-heading text-xl font-medium tracking-tight text-text-primary transition-colors hover:text-brand-ink sm:text-2xl"
                 >
-                  <Mail className="h-4 w-4 text-emerald-400" />
-                  <span className="truncate">{EMAIL}</span>
-                  {copied && <Check className="h-3.5 w-3.5 text-emerald-400" />}
+                  <span className="link-underline truncate">{EMAIL}</span>
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-customBorder text-text-secondary transition-colors group-hover:border-brand-ink group-hover:text-brand-ink">
+                    {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                  </span>
                 </button>
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="inline-flex min-h-11 items-center justify-center rounded-lg bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-black shadow-sm shadow-emerald-500/20 transition-colors hover:bg-emerald-600"
+                <span
+                  className="mt-2 block h-4 font-mono text-[11px] text-brand-ink"
+                  aria-live="polite"
                 >
-                  Send Email
-                </a>
+                  {copied ? 'Copied to clipboard' : ''}
+                </span>
               </div>
 
-              <div className="flex items-center gap-3">
-                {[
-                  { icon: Github, href: SOCIALS.github, label: 'GitHub' },
-                  { icon: Linkedin, href: SOCIALS.linkedin, label: 'LinkedIn' },
-                ].map((social) => (
+              <div className="flex flex-wrap items-center gap-3">
+                <Magnetic>
+                  <a href={`mailto:${EMAIL}`} className="btn-primary">
+                    Send email
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </Magnetic>
+                {socials.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-customBorder bg-bg-card text-text-secondary transition-colors hover:bg-emerald-500/10 hover:text-emerald-400"
+                    className="btn-ghost group"
                   >
-                    <social.icon className="h-4 w-4" />
+                    {social.label}
+                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </a>
                 ))}
               </div>
 
-              <div className="flex items-center gap-2 text-sm text-emerald-400">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
-                </span>
-                Usually responds within 24 hours
-              </div>
+              <dl className="grid grid-cols-2 gap-6 border-t border-customBorder pt-6">
+                <div>
+                  <dt className="field-label">Response time</dt>
+                  <dd className="flex items-center gap-2 text-sm text-text-primary">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-brand-ink opacity-75" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-ink" />
+                    </span>
+                    Within 24 hours
+                  </dd>
+                </div>
+                <div>
+                  <dt className="field-label">Local time</dt>
+                  <dd className="text-sm text-text-primary">
+                    <LocalTime /> · Islamabad
+                  </dd>
+                </div>
+              </dl>
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.15} className="flex-1">
+          <FadeIn delay={0.15} className="lg:col-span-6 lg:col-start-7">
             {submitted ? (
-              <div className="flex flex-col items-center justify-center rounded-lg border border-emerald-500/30 bg-bg-card p-8 text-center sm:p-12">
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10">
-                  <Check className="h-8 w-8 text-emerald-400" />
+              <div className="flex min-h-[420px] flex-col items-center justify-center rounded-[28px] border border-brand-ink/30 bg-bg-card p-8 text-center sm:p-12">
+                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-brand text-brand-contrast">
+                  <Check className="h-8 w-8" />
                 </div>
-                <h3 className="font-heading text-xl font-semibold text-text-primary">
+                <h3 className="font-heading text-3xl font-semibold tracking-tight text-text-primary">
                   Message sent!
                 </h3>
-                <p className="mt-2 text-text-secondary">
+                <p className="mt-3 text-text-secondary">
                   Thanks! I&apos;ll get back to you within 24 hours.
                 </p>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="flex flex-col gap-5 rounded-lg border border-customBorder bg-bg-card p-5 shadow-lg shadow-black/5 sm:p-8"
+                noValidate
+                className="flex flex-col gap-5 rounded-[28px] border border-customBorder bg-bg-card p-5 shadow-2xl shadow-black/10 sm:p-9"
               >
                 <input
                   type="text"
@@ -159,42 +194,46 @@ export default function Contact() {
                   className="hidden"
                   tabIndex={-1}
                   autoComplete="off"
+                  aria-hidden="true"
                 />
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-text-primary">
-                    Name
-                  </label>
-                  <input
-                    {...register('name')}
-                    className="w-full rounded-lg border border-customBorder bg-bg px-3 py-3 text-base text-text-primary outline-none transition-colors placeholder:text-text-muted focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 sm:py-2.5 sm:text-sm"
-                    placeholder="Your name"
-                  />
-                  {errors.name && (
-                    <p className="mt-1 text-xs text-error">{errors.name.message}</p>
-                  )}
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="contact-name" className="field-label">
+                      Name
+                    </label>
+                    <input
+                      id="contact-name"
+                      {...register('name')}
+                      autoComplete="name"
+                      className="field"
+                      placeholder="Your name"
+                    />
+                    {errors.name && (
+                      <p className="mt-1.5 text-xs text-error">{errors.name.message}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label htmlFor="contact-email" className="field-label">
+                      Email
+                    </label>
+                    <input
+                      id="contact-email"
+                      {...register('email')}
+                      type="email"
+                      autoComplete="email"
+                      className="field"
+                      placeholder="you@example.com"
+                    />
+                    {errors.email && (
+                      <p className="mt-1.5 text-xs text-error">{errors.email.message}</p>
+                    )}
+                  </div>
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-text-primary">
-                    Email
+                  <label htmlFor="contact-type" className="field-label">
+                    Project type
                   </label>
-                  <input
-                    {...register('email')}
-                    type="email"
-                    className="w-full rounded-lg border border-customBorder bg-bg px-3 py-3 text-base text-text-primary outline-none transition-colors placeholder:text-text-muted focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 sm:py-2.5 sm:text-sm"
-                    placeholder="you@example.com"
-                  />
-                  {errors.email && (
-                    <p className="mt-1 text-xs text-error">{errors.email.message}</p>
-                  )}
-                </div>
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-text-primary">
-                    Project Type
-                  </label>
-                  <select
-                    {...register('projectType')}
-                    className="w-full rounded-lg border border-customBorder bg-bg px-3 py-3 text-base text-text-primary outline-none transition-colors focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 sm:py-2.5 sm:text-sm"
-                  >
+                  <select id="contact-type" {...register('projectType')} className="field">
                     <option value="Freelance Project">Freelance Project</option>
                     <option value="Job Opportunity">Job Opportunity</option>
                     <option value="AI Video/Social Media">AI Video/Social Media</option>
@@ -203,13 +242,10 @@ export default function Contact() {
                 </div>
                 {showBudget && (
                   <div>
-                    <label className="mb-1.5 block text-sm font-medium text-text-primary">
-                      Budget Range
+                    <label htmlFor="contact-budget" className="field-label">
+                      Budget range
                     </label>
-                    <select
-                      {...register('budget')}
-                      className="w-full rounded-lg border border-customBorder bg-bg px-3 py-3 text-base text-text-primary outline-none transition-colors focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 sm:py-2.5 sm:text-sm"
-                    >
+                    <select id="contact-budget" {...register('budget')} className="field">
                       <option value="">Select budget</option>
                       <option value="Under $1k">Under $1k</option>
                       <option value="$1k–$5k">$1k–$5k</option>
@@ -219,23 +255,24 @@ export default function Contact() {
                   </div>
                 )}
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-text-primary">
+                  <label htmlFor="contact-message" className="field-label">
                     Message
                   </label>
                   <textarea
+                    id="contact-message"
                     {...register('message')}
-                    rows={4}
-                    className="w-full rounded-lg border border-customBorder bg-bg px-3 py-3 text-base text-text-primary outline-none transition-colors placeholder:text-text-muted focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 sm:py-2.5 sm:text-sm"
+                    rows={5}
+                    className="field resize-none"
                     placeholder="Tell me about your project..."
                   />
                   {errors.message && (
-                    <p className="mt-1 text-xs text-error">{errors.message.message}</p>
+                    <p className="mt-1.5 text-xs text-error">{errors.message.message}</p>
                   )}
                 </div>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-black shadow-sm shadow-emerald-500/20 transition-colors hover:bg-emerald-600 disabled:opacity-60"
+                  className="btn-primary group mt-1 disabled:opacity-60"
                 >
                   {isSubmitting ? (
                     <>
@@ -243,7 +280,10 @@ export default function Contact() {
                       Sending...
                     </>
                   ) : (
-                    'Send Message'
+                    <>
+                      Send message
+                      <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </>
                   )}
                 </button>
               </form>

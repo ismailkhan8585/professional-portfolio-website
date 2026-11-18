@@ -1,6 +1,7 @@
 'use client';
 
 import { ThemeProvider } from 'next-themes';
+import { LazyMotion, MotionConfig, domAnimation } from 'framer-motion';
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -11,7 +12,10 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       disableTransitionOnChange
       storageKey="portfolio-theme"
     >
-      {children}
+      {/* reducedMotion="user" turns off movement for visitors who ask their OS for less motion */}
+      <MotionConfig reducedMotion="user">
+        <LazyMotion features={domAnimation}>{children}</LazyMotion>
+      </MotionConfig>
     </ThemeProvider>
   );
 }

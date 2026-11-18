@@ -46,10 +46,8 @@ export default function CaseStudy({ project }: CaseStudyProps) {
 
       <FadeIn>
         <div className="mb-8">
-          <span className="font-mono text-sm text-emerald-400">
-            {project.category}
-          </span>
-          <h1 className="mt-2 font-heading text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">
+          <span className="eyebrow">{project.category}</span>
+          <h1 className="display mt-5 text-4xl sm:text-6xl">
             {project.title}
           </h1>
           <p className="mt-4 text-base leading-7 text-text-secondary sm:text-lg sm:leading-8">

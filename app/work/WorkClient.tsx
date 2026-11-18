@@ -23,10 +23,11 @@ export default function WorkClient() {
     <div className="mx-auto max-w-7xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 lg:px-8 lg:pb-24">
       <FadeIn>
         <div className="mb-10 sm:mb-12">
-          <h1 className="font-heading text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">
-            All Projects
+          <span className="eyebrow">Archive ({String(allProjects.length).padStart(2, '0')})</span>
+          <h1 className="display mt-5 text-5xl sm:text-7xl">
+            All <span className="serif-accent text-[1.08em]">projects</span>
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-text-secondary">
+          <p className="mt-6 max-w-2xl text-base leading-7 text-text-secondary sm:text-lg">
             A complete collection of web apps, mobile apps, AI content campaigns, and personal builds.
           </p>
         </div>

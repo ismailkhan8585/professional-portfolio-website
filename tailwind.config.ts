@@ -10,9 +10,10 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        heading: ['var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-jetbrains-mono)', 'monospace'],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-display)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
+        mono: ['var(--font-mono)', 'monospace'],
       },
       colors: {
         bg: {
@@ -29,31 +30,18 @@ const config: Config = {
           secondary: 'rgb(var(--app-text-secondary) / <alpha-value>)',
           muted: 'rgb(var(--app-text-muted) / <alpha-value>)',
         },
+        brand: {
+          DEFAULT: 'rgb(var(--brand) / <alpha-value>)',
+          strong: 'rgb(var(--brand-strong) / <alpha-value>)',
+          ink: 'rgb(var(--brand-ink) / <alpha-value>)',
+          contrast: 'rgb(var(--brand-contrast) / <alpha-value>)',
+        },
+        // legacy alias: older pages still use emerald-* classes, so they follow the brand colour
         emerald: {
-          50: 'rgb(236 253 245)',
-          100: 'rgb(209 250 229)',
-          200: 'rgb(167 243 208)',
-          300: 'rgb(110 231 183)',
-          400: 'rgb(52 211 153)',
-          500: 'rgb(16 185 129)',
-          600: 'rgb(5 150 105)',
-          700: 'rgb(4 120 87)',
-          800: 'rgb(6 95 70)',
-          900: 'rgb(6 78 59)',
-        },
-        warning: 'rgb(234 179 8)',
-        error: 'rgb(239 68 68)',
-        light: {
-          bg: 'rgb(255 255 255)',
-          card: 'rgb(250 250 250)',
-          border: 'rgb(228 228 231)',
-          text: 'rgb(9 9 11)',
-        },
-        background: 'hsl(var(--background) / <alpha-value>)',
-        foreground: 'hsl(var(--foreground) / <alpha-value>)',
-        card: {
-          DEFAULT: 'hsl(var(--card) / <alpha-value>)',
-          foreground: 'hsl(var(--card-foreground) / <alpha-value>)',
+          300: 'rgb(var(--brand-ink) / <alpha-value>)',
+          400: 'rgb(var(--brand-ink) / <alpha-value>)',
+          500: 'rgb(var(--brand) / <alpha-value>)',
+          600: 'rgb(var(--brand-strong) / <alpha-value>)',
         },
         popover: {
           DEFAULT: 'hsl(var(--popover) / <alpha-value>)',
@@ -90,6 +78,13 @@ const config: Config = {
           '5': 'hsl(var(--chart-5))',
         },
       },
+      // Tailwind 3.3 has no numeric min-height scale; these are the sizes the site uses
+      minHeight: {
+        9: '2.25rem',
+        10: '2.5rem',
+        11: '2.75rem',
+        12: '3rem',
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
@@ -108,9 +103,17 @@ const config: Config = {
           '0%': { transform: 'scale(1)', opacity: '1' },
           '100%': { transform: 'scale(1.5)', opacity: '0' },
         },
-        'marquee': {
+        marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
+        },
+        'marquee-reverse': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+        aurora: {
+          '0%, 100%': { transform: 'translate3d(0,0,0) scale(1)' },
+          '50%': { transform: 'translate3d(6%,-8%,0) scale(1.15)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
@@ -121,7 +124,10 @@ const config: Config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'pulse-ring': 'pulse-ring 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'marquee': 'marquee 30s linear infinite',
+        marquee: 'marquee 38s linear infinite',
+        'marquee-reverse': 'marquee-reverse 38s linear infinite',
+        'spin-slow': 'spin 16s linear infinite',
+        aurora: 'aurora 14s ease-in-out infinite',
         'float': 'float 4s ease-in-out infinite',
       },
     },

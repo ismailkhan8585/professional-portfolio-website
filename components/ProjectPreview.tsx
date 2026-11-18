@@ -7,60 +7,62 @@ interface ProjectPreviewProps {
   category?: string;
   variant?: 'default' | 'compact' | 'wide';
   className?: string;
+  priority?: boolean;
 }
 
 const blurDataURL =
-  'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDgwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9IiMwYTBhMGEiLz48cmVjdCB4PSIxMjAiIHk9IjEwMCIgd2lkdGg9IjU2MCIgaGVpZ2h0PSIzMDAiIHJ4PSIyNCIgZmlsbD0iIzEwYjk4MSIgZmlsbC1vcGFjaXR5PSIwLjE4Ii8+PC9zdmc+';
+  'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDgwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9IiMxMjEyMTQiLz48L3N2Zz4=';
 
+/** Project screenshot inside a minimal browser frame, sitting on a soft stage. */
 export default function ProjectPreview({
   title,
   previewImage,
   category,
   variant = 'default',
   className,
+  priority = false,
 }: ProjectPreviewProps) {
   return (
     <div
       className={cn(
-        'group relative flex w-full items-center justify-center overflow-hidden bg-bg',
+        'group/preview relative flex w-full items-center justify-center overflow-hidden bg-bg-hover/60',
         variant === 'compact'
-          ? 'aspect-[16/10] min-h-52'
+          ? 'aspect-[16/10.5]'
           : variant === 'wide'
-          ? 'aspect-[16/9] min-h-64'
-          : 'aspect-[16/11] min-h-64 sm:aspect-[16/10] lg:h-full lg:min-h-[360px]',
+          ? 'aspect-[16/10] sm:aspect-[16/9]'
+          : 'aspect-[16/11] lg:aspect-auto lg:h-full lg:min-h-[400px]',
         className
       )}
     >
+      {/* stage glow */}
       <div
-        className="absolute inset-0 opacity-60"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgb(var(--app-border) / 0.35) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--app-border) / 0.35) 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
-        }}
+        aria-hidden="true"
+        className="absolute left-1/2 top-full h-[70%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-ink/20 blur-[70px] transition-opacity duration-700 group-hover/preview:opacity-100 sm:opacity-60"
       />
-      <div className="relative w-[90%] max-w-[720px] rounded-lg border border-customBorder bg-bg-card shadow-2xl shadow-black/20 transition-transform duration-300 group-hover:-translate-y-1 sm:w-[88%]">
-        <div className="flex items-center gap-2 border-b border-customBorder px-3 py-2">
-          <span className="h-2.5 w-2.5 rounded-full bg-red-500" />
-          <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
-          <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+
+      <div className="relative w-[88%] overflow-hidden rounded-xl border border-customBorder bg-bg-card shadow-2xl shadow-black/30 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/preview:-translate-y-1.5 group-hover/preview:scale-[1.02]">
+        <div className="flex items-center gap-1.5 border-b border-customBorder px-3 py-2">
+          <span className="h-2 w-2 rounded-full bg-customBorder-hover/70" />
+          <span className="h-2 w-2 rounded-full bg-customBorder-hover/70" />
+          <span className="h-2 w-2 rounded-full bg-customBorder-hover/70" />
           {category && (
-            <span className="ml-auto max-w-[52%] truncate rounded-full bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-emerald-400">
+            <span className="ml-auto max-w-[60%] truncate font-mono text-[9px] uppercase tracking-[0.18em] text-text-muted sm:text-[10px]">
               {category}
             </span>
           )}
         </div>
-        <div className="aspect-[16/9] w-full overflow-hidden rounded-b-xl bg-bg p-2 sm:p-3">
+        <div className="aspect-[16/9] w-full overflow-hidden bg-bg">
           <Image
             src={previewImage}
             alt={`${title} screenshot preview`}
             width={1200}
             height={675}
-            loading="lazy"
+            priority={priority}
+            loading={priority ? undefined : 'lazy'}
             placeholder="blur"
             blurDataURL={blurDataURL}
             sizes="(min-width: 1280px) 560px, (min-width: 1024px) 44vw, (min-width: 640px) 70vw, 82vw"
-            className="h-full w-full rounded-md object-contain object-center"
+            className="h-full w-full object-cover object-top"
           />
         </div>
       </div>

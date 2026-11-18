@@ -1,6 +1,6 @@
 'use client';
 
-import { LazyMotion, domAnimation, m, type Variants } from 'framer-motion';
+import { m, type Variants } from 'framer-motion';
 import { ReactNode } from 'react';
 
 type Direction = 'up' | 'down' | 'left' | 'right';
@@ -29,19 +29,19 @@ interface StaggerItemProps {
   as?: keyof JSX.IntrinsicElements;
 }
 
-const ease = [0.22, 1, 0.36, 1] as const;
+export const ease = [0.22, 1, 0.36, 1] as const;
 
 const offsetByDirection: Record<Direction, { x: number; y: number }> = {
-  up: { x: 0, y: 40 },
-  down: { x: 0, y: -40 },
-  left: { x: 40, y: 0 },
-  right: { x: -40, y: 0 },
+  up: { x: 0, y: 36 },
+  down: { x: 0, y: -36 },
+  left: { x: 36, y: 0 },
+  right: { x: -36, y: 0 },
 };
 
 export function RevealSection({
   children,
   delay = 0,
-  duration = 0.6,
+  duration = 0.8,
   direction = 'up',
   className = '',
   as = 'div',
@@ -50,17 +50,15 @@ export function RevealSection({
   const offset = offsetByDirection[direction];
 
   return (
-    <LazyMotion features={domAnimation}>
-      <MotionTag
-        initial={{ opacity: 0, ...offset }}
-        whileInView={{ opacity: 1, x: 0, y: 0 }}
-        viewport={{ once: true, margin: '-80px', amount: 0.18 }}
-        transition={{ duration, delay, ease }}
-        className={className}
-      >
-        {children}
-      </MotionTag>
-    </LazyMotion>
+    <MotionTag
+      initial={{ opacity: 0, ...offset }}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: true, margin: '-60px', amount: 0.15 }}
+      transition={{ duration, delay, ease }}
+      className={className}
+    >
+      {children}
+    </MotionTag>
   );
 }
 
@@ -85,17 +83,15 @@ export function StaggerContainer({
   };
 
   return (
-    <LazyMotion features={domAnimation}>
-      <MotionTag
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-80px', amount: viewportAmount }}
-        variants={variants}
-        className={className}
-      >
-        {children}
-      </MotionTag>
-    </LazyMotion>
+    <MotionTag
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-60px', amount: viewportAmount }}
+      variants={variants}
+      className={className}
+    >
+      {children}
+    </MotionTag>
   );
 }
 
@@ -109,10 +105,10 @@ export function StaggerItem({
   return (
     <MotionTag
       variants={{
-        hidden: { opacity: 0, y: 32 },
+        hidden: { opacity: 0, y: 28 },
         visible: { opacity: 1, y: 0 },
       }}
-      transition={{ duration: 0.55, ease }}
+      transition={{ duration: 0.7, ease }}
       className={className}
     >
       {children}

@@ -1,22 +1,42 @@
-import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import {
+  Instrument_Sans,
+  Bricolage_Grotesque,
+  Instrument_Serif,
+  JetBrains_Mono,
+} from 'next/font/google';
 
-export const inter = Inter({
+// Note: adjustFontFallback is off because Next 13.5 has no fallback metrics for these families.
+
+// body copy
+export const sans = Instrument_Sans({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-sans',
   display: 'swap',
-  weight: ['400', '500'],
+  adjustFontFallback: false,
 });
 
-export const spaceGrotesk = Space_Grotesk({
+// headlines
+export const display = Bricolage_Grotesque({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-display',
   display: 'swap',
-  weight: ['500', '600', '700'],
+  adjustFontFallback: false,
 });
 
-export const jetbrainsMono = JetBrains_Mono({
+// italic accent words inside headlines
+export const serif = Instrument_Serif({
   subsets: ['latin'],
-  variable: '--font-jetbrains-mono',
+  variable: '--font-serif',
+  display: 'swap',
+  adjustFontFallback: false,
+  weight: '400',
+  style: ['italic'],
+});
+
+// labels, metadata
+export const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
   display: 'swap',
   weight: ['400', '500'],
 });
